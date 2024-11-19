@@ -21,7 +21,7 @@
         </div>
         
         <!-- Green box with articles -->
-        <div class="bg-green-300 p-4 flex flex-col space-y-4 w-[330px] h-[590px]">
+        <div class="bg-light-green p-4 flex flex-col space-y-4 w-[330px] h-[590px]">
             <h2 class="text-4xl">
                 <span class="inline-block p-2">Articles</span>
             </h2>

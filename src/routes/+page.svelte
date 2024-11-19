@@ -1,6 +1,6 @@
-<script>
-    import "../app.css";
-</script>
+<style>
+    @import '../app.css';
+</style>
 
 <h1 class="bg-lime-400">Welcome to SvelteKit</h1>
 <p>

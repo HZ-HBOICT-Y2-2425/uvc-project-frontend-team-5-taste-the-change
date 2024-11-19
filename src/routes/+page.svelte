@@ -13,36 +13,22 @@
     <!-- Flex container for black and green boxes -->
     <section class="mt-4 flex justify-between items-start">
         <!-- Black box with centered background image and 5px margin -->
-        <div 
-            class="bg-black flex items-center justify-center" 
-            style="width: 630px; height: 430px;">
-
+        <div class="bg-black flex items-center justify-center w-[630px] h-[430px]">
             <div 
-                class="bg-cover bg-no-repeat" 
-                style="
-                    background-image: url({background});
-                    background-size: contain;
-                    background-position: center;
-                    width: calc(100% - 10px);
-                    height: calc(100% - 10px);">
+                class="bg-cover bg-center bg-no-repeat w-[610px] h-[410px]" 
+                style="background-image: url({background});">
             </div>
         </div>
         
         <!-- Green box with articles -->
-        <div 
-            class="bg-light-green p-4 flex flex-col space-y-4" 
-            style="width: 330px; height: 590px;">
+        <div class="bg-green-300 p-4 flex flex-col space-y-4 w-[330px] h-[590px]">
+            <h2 class="text-4xl">
+                <span class="inline-block p-2">Articles</span>
+            </h2>
 
             <!-- White boxes - articles -->
-            <div 
-                class="bg-white shadow-md" 
-                style="width: 300px; height: 250px;">
-            </div>
-
-            <div 
-                class="bg-white shadow-md" 
-                style="width: 300px; height: 250px;">
-            </div>
+            <div class="bg-white shadow-md w-[300px] h-[250px]"></div>
+            <div class="bg-white shadow-md w-[300px] h-[250px]"></div>
         </div>
     </section>
 </div>

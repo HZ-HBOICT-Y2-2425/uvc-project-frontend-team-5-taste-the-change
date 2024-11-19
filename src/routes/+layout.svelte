@@ -11,7 +11,7 @@
 	</main>
 
 	<footer class="bg-light-green">
-		<p class="p-2 text-center">Footer </p>
+		<p class="p-2 text-center">Footer</p>
 	</footer>
 </div>
 

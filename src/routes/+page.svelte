@@ -1,6 +1,7 @@
 <script>
     import "../app.css";
     import background from '$lib/assets/background-rabbit.png';
+    import Articles from '$lib/components/articles.svelte';
 </script>
 
 <div class="container w-full mx-auto">
@@ -26,9 +27,8 @@
                 <span class="inline-block p-2">Articles</span>
             </h2>
 
-            <!-- White boxes - articles -->
-            <div class="bg-white shadow-md w-[300px] h-[250px]"></div>
-            <div class="bg-white shadow-md w-[300px] h-[250px]"></div>
+            <!-- Dynamic Articles -->
+            <Articles />
         </div>
     </section>
 </div>

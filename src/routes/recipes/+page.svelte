@@ -9,7 +9,7 @@
 		</h2>
 	</section>
   <section>
-    <div class="bg-indigo-300 w-[1150px] h-auto p-2">
+    <div class="w-[1150px] h-auto p-2">
       <div class="bg-green-50 rounded-lg border-2 border-black h-48 mt-3 mb-3">
         <div class="grid grid-cols-3">
           <h3 class="text-xl p-3 col-span-2">Vegetarian Spaghetti</h3>

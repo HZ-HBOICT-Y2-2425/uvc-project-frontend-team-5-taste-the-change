@@ -10,11 +10,11 @@
             Taste The Change</a>
     </div>
 
-    <ul class="flex space-x-6">
-        <li><a href="/leaderboard" class="text-white hover:text-indigo-400">Leaderboard</a></li>
-        <li><a href="/goals" class="text-white hover:text-indigo-400">Goals</a></li>
-        <li><a href="/statistics" class="text-white hover:text-indigo-400">Statistics</a></li>
-        <li><a href="/recipes" class="text-white hover:text-indigo-400">Recipes</a></li>
-        <li><a href="/profile" class="text-white hover:text-indigo-400">Profile</a></li>
+     <ul class="flex space-x-6 list-none">
+        <li class="list-none"><a href="/leaderboard" class="text-white hover:text-indigo-400">Leaderboard</a></li>
+        <li class="list-none"><a href="/goals" class="text-white hover:text-indigo-400">Goals</a></li>
+        <li class="list-none"><a href="/statistics" class="text-white hover:text-indigo-400">Statistics</a></li>
+        <li class="list-none"><a href="/recipes" class="text-white hover:text-indigo-400">Recipes</a></li>
+        <li class="list-none"><a href="/profile" class="text-white hover:text-indigo-400">Profile</a></li>
     </ul>
 </nav>

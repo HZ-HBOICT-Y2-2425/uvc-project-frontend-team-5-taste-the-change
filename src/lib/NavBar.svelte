@@ -5,7 +5,9 @@
 <nav class="flex items-center justify-between px-4 py-3">
     <div class="flex items-center">
         <img src="/logo.png" class="h-8 w-8 mr-2" />
-        <h1 class="text-white font-bold text-lg">Taste The Change</h1>
+        <!-- I think we should change colour of hover after adding backgound -->
+        <a href="/" class="text-white font-bold text-lg hover:text-indigo-400">
+            Taste The Change</a>
     </div>
 
     <ul class="flex space-x-6">

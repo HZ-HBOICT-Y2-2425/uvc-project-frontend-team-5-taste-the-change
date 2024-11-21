@@ -1,16 +1,15 @@
 <script>
-    import NavBar from '$lib/NavBar.svelte';
+  import '../app.css';
+  import NavBar from '$lib/NavBar.svelte';
 </script>
 
-<div class="flex flex-col min-h-screen bg-gray-100">
-    <NavBar />
-    <div class="flex-grow flex justify-center items-start p-4">
-        <main>
-            <slot />
-        </main>
-    </div>
-</div>
+<div class="flex flex-col h-screen justify-between">
+	<NavBar />
+	<main>
+		<slot />
+	</main>
 
-<style>
-    @import '../app.css';
-</style>
+	<footer class="bg-light-green">
+		<p class="p-2 text-center">Footer</p>
+	</footer>
+</div>

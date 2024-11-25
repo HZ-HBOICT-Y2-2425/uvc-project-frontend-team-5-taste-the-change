@@ -3,7 +3,7 @@ name: CI pipeline
 on: 
   push: 
     branches:
-      - main
+      - pipelineTest-1
 
 jobs:
   build:

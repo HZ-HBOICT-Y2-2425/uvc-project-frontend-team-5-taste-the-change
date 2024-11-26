@@ -111,11 +111,29 @@
       {#if data.data.recipes && data.data.recipes.length > 0}
         <ul>
           {#each data.data.recipes as recipe}
-            <li>
-              <strong>Name:</strong>
-              {recipe.name}, <strong>Time:</strong>
-              {recipe.time} mins
-            </li>
+          <div class="container w-full m-5">
+            <section>
+              <div class="container w-full m-5">
+                <section>
+                    <div class="w-[1150px] h-auto p-2">
+                        <div class="bg-green-50 rounded-lg border-2 border-black h-auto mt-3 mb-3">
+                            <div class="flex items-center p-3"> <!-- Use flexbox -->
+                                <img src="{recipe.image}" alt="random text here" class="h-[100px] w-auto mr-4"> <!-- Add margin to the right -->
+                                <div> <!-- Wrap the text in a div -->
+                                    <h3 class="text-xl">{recipe.name}</h3>
+                                    <p class="text-sm">Insert description here</p>
+                                    <p class="text-sm">{recipe.diet}</p>
+                                    <p class="text-sm">{recipe.servings} Servings</p>
+                                    <p class="text-sm">{recipe.emission_per_meal} Kg CO2</p>
+                                    <p class="text-sm">{recipe.time} minutes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            </section>
+          </div>
           {/each}
         </ul>
       {:else}

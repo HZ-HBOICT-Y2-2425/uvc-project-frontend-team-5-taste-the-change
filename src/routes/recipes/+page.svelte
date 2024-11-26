@@ -111,8 +111,6 @@
       {#if data.data.recipes && data.data.recipes.length > 0}
         <ul>
           {#each data.data.recipes as recipe}
-          <div class="container w-full m-5">
-            <section>
               <div class="container w-full m-5">
                 <section>
                     <div class="w-[1150px] h-auto p-2">
@@ -121,7 +119,7 @@
                                 <img src="{recipe.image}" alt="random text here" class="h-[100px] w-auto mr-4"> <!-- Add margin to the right -->
                                 <div> <!-- Wrap the text in a div -->
                                     <h3 class="text-xl">{recipe.name}</h3>
-                                    <p class="text-sm">Insert description here</p>
+                                    <p class="text-sm"> {recipe.description}</p>
                                     <p class="text-sm">{recipe.diet}</p>
                                     <p class="text-sm">{recipe.servings} Servings</p>
                                     <p class="text-sm">{recipe.emission_per_meal} Kg CO2</p>
@@ -131,9 +129,7 @@
                         </div>
                     </div>
                 </section>
-            </div>
-            </section>
-          </div>
+              </div>
           {/each}
         </ul>
       {:else}

@@ -7,13 +7,16 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+		"test": "jest"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"@types/jest": "^29.5.14",
 		"autoprefixer": "^10.4.20",
+		"jest": "^29.7.0",
 		"mocha": "^10.8.2",
 		"postcss": "^8.4.49",
 		"svelte": "^5.0.0",

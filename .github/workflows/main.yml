@@ -23,11 +23,13 @@ jobs:
 
       # Step 3: Install Dependencies
       - name: Install Dependencies
-        run: |
-          npm install
-          # Simulate an error here
-          echo "Simulating error in npm install"
-          exit 1  # This will cause the build to fail
+        run: npm install
+        continue-on-error: false
+        # run: |
+        #   npm install
+        #   # Simulate an error here
+        #   echo "Simulating error in npm install"
+        #   exit 1  # This will cause the build to fail
 
       # Step 4: Build the SvelteKit Application
       - name: Build Application

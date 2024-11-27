@@ -31,17 +31,17 @@ jobs:
         #   echo "Simulating error in npm install"
         #   exit 1  # This will cause the build to fail
 
-      # Step 5: Build the SvelteKit Application
-      - name: Build Application
-        run: npm run build
-        continue-on-error: false  # Halt if build fails
+      # Step 4: Run Tests
+      - name: Run Tests
+        run: npm run test  # Assuming you have "test" script in package.json
+        continue-on-error: false  # Halt if tests fail
 
-      # Step 4: Build the SvelteKit Application
+      # Step 5: Build the SvelteKit Application
       - name: Build Application
         run: npm run build
         continue-on-error: false
 
-      # Step 5: Deploy to Hosting (Vercel example)
+      # Step 6: Deploy to Hosting (Vercel example)
       - name: Deploy to Vercel
         run: npx vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --yes
         continue-on-error: false

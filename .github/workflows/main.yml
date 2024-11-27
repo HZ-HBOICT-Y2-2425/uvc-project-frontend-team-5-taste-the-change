@@ -34,7 +34,7 @@ jobs:
     # Step 4: Run Linter (ESLint)
       - name: Run Linter (ESLint)
         run: npx eslint . --max-warnings=0
-        continue-on-error: false  # Halt if linting fails
+        # continue-on-error: false  # Halt if linting fails
 
       # Step 5: Run Tests
       - name: Run Tests

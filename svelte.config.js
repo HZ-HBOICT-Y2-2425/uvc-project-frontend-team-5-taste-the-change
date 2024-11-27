@@ -18,7 +18,7 @@ export default {
 	  // Specify the adapter
 	  adapter: adapter({
 		// Optionally specify the Node.js runtime version (Node 18.x is recommended)
-		runtime: 'nodejs18.x', // Use Node.js 18 for compatibility with Vercel
+		// runtime: 'nodejs18.x', // Use Node.js 18 for compatibility with Vercel
 	  }),
 	},
   };

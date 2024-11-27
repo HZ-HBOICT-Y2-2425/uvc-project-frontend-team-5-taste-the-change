@@ -25,16 +25,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
         continue-on-error: false
-        # run: |
-        #   npm install
-        #   # Simulate an error here
-        #   echo "Simulating error in npm install"
-        #   exit 1  # This will cause the build to fail
 
-    # Step 4: Run Linter (ESLint)
+      # Step 4: Run Linter (ESLint)
       - name: Run Linter (ESLint)
-        run: npx eslint . --max-warnings=-1
-        continue-on-error: true  # Halt if linting fails
+        run: npx eslint . --max-warnings=-1  # Allow warnings, show both errors and warnings
+        continue-on-error: true  # Allow pipeline to continue even with warnings
 
       # Step 5: Run Tests
       - name: Run Tests

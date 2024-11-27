@@ -4,7 +4,7 @@ export async function load() {
     console.log('function is called')
     try {
         console.log('Fetching pets from API...');
-        const response = await fetch('http://localhost:3012/recipes/');
+        const response = await fetch('http://localhost:3011/articles/');
         
         console.log('Response status:', response.status); // Log the status of the response
         
@@ -13,10 +13,10 @@ export async function load() {
         }
 
         const data = await response.json();
-        const recipes = data.recipes;
-        console.log('Fetched recipes:', recipes); // Log the fetched pets
+        const articles = data.articles;
+        console.log('Fetched recipes:', articles); // Log the fetched pets
 
-        return { data: { recipes } }; // Ensure returning the correct data structure
+        return { data: { articles } }; // Ensure returning the correct data structure
     } catch (error) {
         console.error('Error fetching recipes:', error); // Log any errors
         return {

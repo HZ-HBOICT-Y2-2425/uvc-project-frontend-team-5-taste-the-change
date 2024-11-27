@@ -3,7 +3,7 @@
 	import logo from '$lib/assets/logo.png';
 </script>
 
-<div class="flex flex-col h-screen justify-between">
+<div class="flex flex-col h-screen">
 	<nav class="bg-gradient-to-r from-green-200 via-green-100 to-blue-200 flex items-center justify-between px-4 py-3">
 		<div class="flex items-center space-x-2">
 			<img src={logo} alt="Logo" class="h-20 w-20" />
@@ -19,9 +19,9 @@
 			<li class="list-none"><a href="/leaderboard" class="text-black hover:text-gray-500">Leaderboard</a></li>
 			<li class="list-none"><a href="/profile" class="text-black hover:text-gray-500">Profile</a></li>
 		</ul>
-    </nav>
+	</nav>
 
-	<main>
+	<main class="flex-grow">
 		<slot />
 	</main>
 

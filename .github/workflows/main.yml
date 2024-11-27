@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - pipelineTest2
 
 jobs:
   build-and-deploy:

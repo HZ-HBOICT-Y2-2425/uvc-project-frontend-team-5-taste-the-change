@@ -24,11 +24,15 @@ jobs:
       # Step 3: Install Dependencies
       - name: Install Dependencies
         run: npm install
+        echo "Simulating error in npm install"
+        exit: 1
 
       # Step 4: Build the SvelteKit Application
       - name: Build Application
         run: npm run build
+        continue-on-error: false
 
       # Step 5: Deploy to Hosting (Vercel example)
       - name: Deploy to Vercel
         run: npx vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --yes
+        continue-on-error: false

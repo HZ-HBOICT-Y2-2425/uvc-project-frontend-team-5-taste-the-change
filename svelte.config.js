@@ -1,4 +1,5 @@
 import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -12,4 +13,12 @@ const config = {
 	preprocess: vitePreprocess()
 };
 
-export default config;
+export default {
+	kit: {
+	  // Specify the adapter
+	  adapter: adapter({
+		// Optionally specify the Node.js runtime version (Node 18.x is recommended)
+		runtime: 'nodejs18.x', // Use Node.js 18 for compatibility with Vercel
+	  }),
+	},
+  };

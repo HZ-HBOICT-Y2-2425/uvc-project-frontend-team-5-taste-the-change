@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - pipelineTest2
+      - unitTesting
 
 jobs:
   build-and-deploy:
@@ -30,6 +30,11 @@ jobs:
         #   # Simulate an error here
         #   echo "Simulating error in npm install"
         #   exit 1  # This will cause the build to fail
+
+      # Step 5: Build the SvelteKit Application
+      - name: Build Application
+        run: npm run build
+        continue-on-error: false  # Halt if build fails
 
       # Step 4: Build the SvelteKit Application
       - name: Build Application

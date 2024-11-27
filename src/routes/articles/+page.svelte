@@ -20,4 +20,4 @@
     {:else}
       <p>No articles found</p>
     {/if}
-  </div>
+</div>

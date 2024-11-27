@@ -13,10 +13,10 @@
 		</div>
 
 		<ul class="flex text-2xl space-x-6 list-none">
-			<li class="list-none"><a href="/leaderboard" class="text-black hover:text-gray-500">Leaderboard</a></li>
+			<li class="list-none"><a href="/recipes" class="text-black hover:text-gray-500">Recipes</a></li>
 			<li class="list-none"><a href="/goals" class="text-black hover:text-gray-500">Goals</a></li>
 			<li class="list-none"><a href="/statistics" class="text-black hover:text-gray-500">Statistics</a></li>
-			<li class="list-none"><a href="/recipes" class="text-black hover:text-gray-500">Recipes</a></li>
+			<li class="list-none"><a href="/leaderboard" class="text-black hover:text-gray-500">Leaderboard</a></li>
 			<li class="list-none"><a href="/profile" class="text-black hover:text-gray-500">Profile</a></li>
 		</ul>
     </nav>

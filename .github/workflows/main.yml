@@ -24,7 +24,7 @@ jobs:
       # Step 3: Install Dependencies
       - name: Install Dependencies
         run: npm install
-        echo "Simulating error in npm install"
+        echo: "Simulating error in npm install"
         exit: 1
 
       # Step 4: Build the SvelteKit Application

@@ -4,7 +4,7 @@
 </script>
 
 <div class="flex flex-col h-screen">
-	<nav class="bg-gradient-to-r from-green-200 via-green-100 to-blue-200 flex items-center justify-between px-4 py-3">
+	<nav class="bg-gradient-to-r from-[#96DF77] via-[#D9FDCA] to-[#BDD4FA] flex items-center justify-between px-4 py-3">
 		<div class="flex items-center space-x-2">
 			<img src={logo} alt="Logo" class="h-20 w-20" />
 			<a href="/" class="p-4 text-4xl font-sans font-bold text-black hover:text-gray-500">

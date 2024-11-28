@@ -2,6 +2,7 @@
     import "../app.css";
     import background from "$lib/assets/background-rabbit.png";
     import bunny from "$lib/assets/Bunny.png";
+    import RabbitName from "$lib/components/rabbitName.svelte";
 </script>
 
 <section class="relative">
@@ -21,17 +22,7 @@
     </div>
 
     <!-- Pick a Name for Your Rabbit Box -->
-    <div
-        class="absolute top-2/3 right-20 transform -translate-y-1/2 w-80">
-        <h2 class="text-white text-2xl font-bold mb-2 text-center">
-            Pick a name for your rabbit
-        </h2>
-        <input
-            type="text"
-            placeholder="Enter name"
-            class="mt-2 p-2 rounded border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-green-200"
-        />
-    </div>
+    <RabbitName />
 
     <!-- Centered Text on the Left -->
     <div

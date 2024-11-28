@@ -1,36 +1,44 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
-import svelte from "eslint-plugin-svelte";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import globals from "globals";
+import eslintPluginSvelte from "eslint-plugin-svelte"; // Add svelte plugin
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
+/** @type {import('eslint').Linter.BaseConfig} */
 export default [
-  // Base JavaScript/TypeScript configuration
   {
-    files: ["*.{js,mjs,cjs,ts}"],
+    ignores: [
+      ".svelte-kit/**",  // Ignore everything inside the .svelte-kit folder
+      ".vercel/**",      // Ignore everything inside the .vercel folder
+    ],
+  },
+  {
+    files: ["**/*.{js,mjs,cjs,ts}"], // Apply to js, ts, and svelte files
     languageOptions: {
-      parser: tsParser, // Use TypeScript parser for TS files
-      globals: { ...globals.browser, ...globals.node }, // Browser & Node globals
+      parser: tsParser, // Use TypeScript parser for JS/TS
+      globals: { ...globals.browser, ...globals.node }, // Include browser and Node.js globals
     },
     plugins: {
-      "@typescript-eslint": tseslint, // TypeScript plugin
+      "@typescript-eslint": tsPlugin, // Add TypeScript plugin
     },
     rules: {
-      ...pluginJs.configs.recommended.rules, // Recommended JS rules
-      ...tseslint.configs.recommended.rules, // Recommended TS rules
+      ...tsPlugin.configs.recommended.rules, // Apply recommended TypeScript rules
+      "@typescript-eslint/ban-ts-comment": "off", // Turn off specific rule
+
+      // Enforce 2-space indentation for JS/TS files
+      "indent": ["warn", 2], // JavaScript and TypeScript files
+
+      // Enforce camelCase for variable and function names
+      "camelcase": ["error", { "properties": "always" }], // Enforce camelCase in variable and property names
     },
   },
-
-  // Svelte configuration
+  ...eslintPluginSvelte.configs['flat/recommended'],
   {
-    files: ["*.svelte"],
-    plugins: {
-      svelte,
-    },
-    processor: "svelte/svelte",
     rules: {
-      // Add Svelte-specific rules here if needed
-    },
+      // Enforce camelCase in Svelte files
+      "camelcase": ["error", { "properties": "always" }],
+      
+      // Enforce 2-space indentation in Svelte files
+      "indent": ["warn", 2],
+    }
   },
 ];

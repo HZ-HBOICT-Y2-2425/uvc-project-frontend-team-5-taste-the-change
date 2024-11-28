@@ -1,36 +1,32 @@
 <script>
     import "../app.css";
-    import background from '$lib/assets/background-rabbit.png';
+    import background from "$lib/assets/background-rabbit.png";
+    import bunny from "$lib/assets/Bunny.png";
+    import RabbitName from "$lib/components/rabbitName.svelte";
 </script>
 
-<div class="container w-full mx-auto">
-	<section class="mt-10">
-		<h2 class="text-6xl">
-			<span class="inline-block">Home Page</span>
-		</h2>
-	</section>
+<section class="relative">
+    <!-- Background Image with Gradient -->
+    <div
+        class="w-full h-[75vh] bg-cover bg-center"
+        style="background-image: 
+            linear-gradient(to bottom, #03091236, #1F334A36, #6393D736),
+            linear-gradient(#05060961, #05060961),
+            url({background});"
+    ></div>
+    <!-- Rabbit box -->
+    <div
+        class="absolute top-1/3 right-20 transform -translate-y-1/2 bg-dark-green rounded-3xl shadow-lg p-8 flex flex-col items-center justify-center"
+        style="width: 320px; height: 320px;">
+        <img src={bunny} alt="Bunny" class="w-2/3 transform scale-x-[-1]"/>
+    </div>
 
-    <!-- Flex container for black and green boxes -->
-    <section class="mt-4 flex justify-between items-start">
-        <!-- Black box with centered background image and 5px margin -->
-        <div class="bg-black flex items-center justify-center w-[630px] h-[430px]">
-            <div 
-                class="bg-cover bg-center bg-no-repeat w-[610px] h-[410px]" 
-                style="background-image: url({background});">
-            </div>
-        </div>
-        
-        <!-- Green box with articles -->
-        <div class="bg-light-green p-4 flex flex-col space-y-4 w-[330px] h-[590px]">
-            <h2 class="text-4xl">
-                <span class="inline-block p-2">Articles</span>
-            </h2>
+    <!-- Pick a Name for Your Rabbit Box -->
+    <RabbitName />
 
-            <!-- White boxes - articles -->
-            <div class="bg-white shadow-md w-[300px] h-[250px]"></div>
-            <div class="bg-white shadow-md w-[300px] h-[250px]"></div>
-        </div>
-    </section>
-</div>
-
-<h1>dikkeboktor</h1>
+    <!-- Centered Text on the Left -->
+    <div
+        class="absolute top-1/2 left-10 transform -translate-y-1/2 text-white text-left font-poppins font-bold text-[48px] leading-[57.6px]">
+         (amount) of CO2 was saved by this website
+    </div>
+</section>

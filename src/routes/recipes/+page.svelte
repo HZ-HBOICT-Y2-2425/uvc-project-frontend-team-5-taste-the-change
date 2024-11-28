@@ -20,7 +20,7 @@
 </script>
 
 <div class="container w-full mx-auto">
-  <section class="mb-5">
+  <section class="flex items-center mb-5">
     <h2 class="text-6xl">Recipes</h2>
   </section>
 
@@ -28,7 +28,7 @@
   <section class="flex justify-between gap-x-8">
     <!-- Filters Section -->
     <aside
-      class="p-4 flex flex-col space-y-6 w-1/4 h-auto rounded-lg shadow-lg bg-gradient-to-br from-green-200 via-blue-100 to-blue-200"
+      class="p-4 flex flex-col space-y-6 w-1/4 h-fit rounded-lg shadow-lg bg-gradient-to-br from-green-200 via-blue-100 to-blue-200"
     >
       <h2 class="text-4xl">
         <span class="inline-block">Filters</span>

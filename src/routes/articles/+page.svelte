@@ -7,6 +7,8 @@
     });
     // `data` is automatically passed from the `load` function in the server
     export let data;
+
+    let My_variable = 0;
 </script>
 
 <div class="w-3/4">

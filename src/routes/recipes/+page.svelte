@@ -129,6 +129,7 @@
     </aside>
 
     <div class="w-3/4">
+      <h2 class="text-3xl">Recipes matching description: {filteredRecipes.length}</h2>
       {#if filteredRecipes.length > 0}
       <ul>
         {#each filteredRecipes as recipe}

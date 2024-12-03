@@ -1,3 +1,7 @@
+<script>
+    import InfoBox from "$lib/components/infoBox.svelte";
+</script>
+
 <div class="container mx-auto p-6">
     <!-- Choose Your Weekly Goals Section -->
     <div class="mb-8">
@@ -44,21 +48,18 @@
     <div>
         <h2 class="text-2xl font-bold mb-4">How to Use Your Leaves?</h2>
         <div class="flex space-x-4">
-            <div class="bg-white p-4 rounded-lg shadow-md w-1/3 text-center">
-                <img src="src/lib/assets/Frame 26.png" alt="Rewards" class="w-40 h-auto mx-auto mb-2">
-                <p>Exchange leaves for exciting bonuses.</p>
-                <button class="mt-2 bg-white border border-blue-500 text-blue-500 px-4 py-1 rounded-full">Learn More</button>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-md w-1/3 text-center">
-                <img src="src/lib/assets/Frame 26 (1).png" alt="Decorate Rabbit" class="w-52 h-auto mx-auto mb-2">
-                <p>Customize the mascot with fun accessories and decorations.</p>
-                <button class="mt-2 bg-white border border-blue-500 text-blue-500 px-4 py-1 rounded-full">Learn More</button>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-md w-1/3 text-center">
-                <img src="src/lib/assets/Frame 26 (2).png" alt="Compete" class="w-52 h-auto mx-auto mb-2">
-                <p>Show off progress, climb leaderboards, and challenge friends.</p>
-                <button class="mt-2 bg-white border border-blue-500 text-blue-500 px-4 py-1 rounded-full">Learn More</button>
-            </div>
+            <InfoBox>
+                <img slot="image" src="src/lib/assets/Frame 26.png" alt="unlock rewards" class="w-40 h-auto mx-auto mb-2">
+                <p slot="description">Exchange your leaves for exciting bonuses.</p>
+            </InfoBox>
+            <InfoBox>
+                <img slot="image" src="src/lib/assets/Frame 26 (1).png" alt="customize mascot" class="w-52 h-auto mx-auto mb-2">
+                <p slot="description">Customize the mascot with fun accessories and decorations.</p>
+            </InfoBox>
+            <InfoBox>
+                <img slot="image" src="src/lib/assets/Frame 26 (2).png" alt="show progress" class="w-52 h-auto mx-auto mb-2">
+                <p slot="description">Show off progress, climb leaderboards, and challenge friends.</p>
+            </InfoBox>
         </div>
     </div>
 </div>

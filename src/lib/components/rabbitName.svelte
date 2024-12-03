@@ -9,7 +9,7 @@
 
 
 
-<div class="absolute top-2/3 right-20 transform -translate-y-1/2 w-80">
+<div class="absolute top-3/4 right-20 transform -translate-y-1/2 w-80">
     <h2 class="text-white text-2xl font-bold mb-2 text-center">
         Pick a name for your rabbit
     </h2>
@@ -17,8 +17,16 @@
         bind:value={name}
         type="text"
         placeholder="Enter name"
-        class="mt-2 p-2 rounded border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-green-200"
+        class="mt-2 p-2 rounded border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-dark-green"
     />
-    <button on:click={finalRabbitName}>submit name</button>
-    <p>your chosen name is {finalName}</p>
+    <button 
+    class="mt-4 w-full bg-dark-green text-white font-bold py-2 px-4 rounded-full shadow-md hover:bg-[#96DF77] transition-all duration-300"
+    on:click={finalRabbitName}>
+    Submit Name
+</button>
+<p class="mt-4 text-white text-lg font-semibold text-center">
+    {#if finalName}
+        Your chosen name is: <span class="text-green-300">{finalName}</span>
+    {/if}
+</p>
 </div>

@@ -3,6 +3,7 @@
     import background from "$lib/assets/background-rabbit.png";
     import bunny from "$lib/assets/Bunny.png";
     import RabbitName from "$lib/components/rabbitName.svelte";
+    import Articles from '$lib/components/articles.svelte';
 
     let showClothingBox = false;
 
@@ -89,4 +90,10 @@
         class="absolute top-1/2 left-10 transform -translate-y-1/2 text-white text-left font-poppins font-bold text-[48px] leading-[57.6px]">
         (amount) of CO2 was saved by this website
     </div>
+
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4">Articles</h1>
+        <Articles />
+    </div>
+
 </section>

@@ -1,18 +1,22 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
-    import { articlesarray } from '../Articles.js'; 
-    import Article from './article.svelte';
-
-    let selectedArticles = [];
-
-    onMount(() => {
-        //pick two random articles
-        selectedArticles = articlesarray.sort(() => Math.random() - 0.5).slice(0, 2);
+    import Article from '$lib/components/article.svelte';
+  
+    // Define the type of an article
+    type ArticleType = {
+      name: string;
+      imgUrl: string;
+      info: string;
+    };
+  
+    let articles: ArticleType[] = [];
+  
+    const apiUrl = `http://localhost:3011/`;
+  
+    onMount(async () => {
+      const response = await fetch(apiUrl);
+      const result = await response.json();
+      articles = result.articles; // Ensure the data matches the defined type
     });
-</script>
-
-<div class="flex flex-col space-y-4"> 
-    {#each selectedArticles as article (article.articlename)}
-        <Article {article} />
-    {/each}
-</div>
+  </script>
+  

@@ -11,12 +11,12 @@
   
     let articles: ArticleType[] = [];
   
-    const apiUrl = `http://localhost:3011/`;
+    const apiUrl = `http://localhost:3011/articles`;
   
     onMount(async () => {
       const response = await fetch(apiUrl);
       const result = await response.json();
-      articles = result.articles; // Ensure the data matches the defined type
+      articles = result.articles;
     });
   </script>
   

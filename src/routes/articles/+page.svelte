@@ -41,19 +41,14 @@
               <div
                 class="flex-none w-1/2 bg-white shadow-md rounded-lg overflow-hidden">
                 <img
-                  src={article.imageUrl}
+                  src={article.imgUrl}
                   alt={article.name}
+
                   class="w-full h-48 object-cover"
                 />
                 <div class="p-4">
                   <h3 class="text-xl font-bold mb-2">{article.name}</h3>
                   <p class="text-sm text-gray-600">{article.info}</p>
-                  <a
-                    href={article.readMoreUrl}
-                    class="text-blue-500 mt-2 inline-block"
-                  >
-                    read more &gt;
-                  </a>
                 </div>
               </div>
             {/each}

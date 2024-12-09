@@ -36,7 +36,7 @@
     {#if goalPicked}
       <h2>your chosen goal is: {$displayGoal.goal}</h2>
     {/if}
-    <div class="flex space-x-4">
+    <div class="flex space-x-8 items-center">
       <div class="flex-grow">
         {#if data.data.goals.length > 0}
           {#each data.data.goals as goal, index}
@@ -77,9 +77,7 @@
       View My Progress
     </button>
   </div>
-</div>
-
-<!-- How to Use Your Leaves Section -->
+  <!-- How to Use Your Leaves Section -->
 <div>
   <h2 class="text-2xl font-bold mb-4">How to Use Your Leaves?</h2>
   <div class="flex space-x-4">
@@ -115,4 +113,5 @@
       </p>
     </InfoBox>
   </div>
+</div>
 </div>

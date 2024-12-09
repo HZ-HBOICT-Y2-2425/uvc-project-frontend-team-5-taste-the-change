@@ -1,9 +1,5 @@
-<script lang="ts">
-  export let article: {
-    name: string;
-    imgUrl: string;
-    info: string;
-  };
+<script>
+  export let article;
 </script>
 
 <div class="article-card bg-white shadow-md rounded-lg p-4">

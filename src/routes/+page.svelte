@@ -2,6 +2,7 @@
     import "../app.css";
     import background from "$lib/assets/background-rabbit.png";
     import bunny from "$lib/assets/Bunny.png";
+    import ClothesHanger from "$lib/assets/Hanger.png"
     import RabbitName from "$lib/components/rabbitName.svelte";
     import ClothingBox from "$lib/components/clothingBox.svelte";
   
@@ -45,7 +46,7 @@
       <button
         class="absolute top-4 right-4 bg-white text-dark-green rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-gray-200 transition duration-300"
         on:click={() => (showClothingBox = !showClothingBox)}>
-        <!-- Optional: Add a clothes hanger icon here -->
+        <img src={ClothesHanger} alt="Clothes Hanger">
       </button>
     </div>
   

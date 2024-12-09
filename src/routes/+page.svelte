@@ -10,6 +10,8 @@
     function toggleClothingBox() {
         showClothingBox = !showClothingBox;
     }
+
+    export let articlesData; 
 </script>
 
 <section class="relative">
@@ -93,7 +95,7 @@
 
     <div class="container mx-auto p-4">
         <h1 class="text-2xl font-bold mb-4">Articles</h1>
-        <Articles />
+        <Articles {articlesData} />
     </div>
 
 </section>

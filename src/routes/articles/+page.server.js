@@ -5,7 +5,7 @@ export async function load() {
   try {
     console.log('Fetching articles from API...');
     const response = await fetch('http://localhost:3011/articles/');
-
+        
     console.log('Response status:', response.status); // Log the status of the response
 
     if (!response.ok) {

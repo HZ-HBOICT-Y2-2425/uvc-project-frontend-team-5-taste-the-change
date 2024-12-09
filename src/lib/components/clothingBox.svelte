@@ -7,16 +7,17 @@
         id: number;
         name: string;
         imgUrl: string;
+        bunnyURL: string;
     };
 
     // Item data
     const items = writable<Item[]>([
-        { id: 1, name: "None", imgUrl: "src/lib/assets/items/default.png" },
-        { id: 2, name: "Tophat", imgUrl: "src/lib/assets/items/tophat.png" },
-        { id: 3, name: "Crown", imgUrl: "src/lib/assets/items/crown.png" },
-        { id: 4, name: "Bow", imgUrl: "src/lib/assets/items/bow.png" },
-        { id: 5, name: "Flower", imgUrl: "src/lib/assets/items/flower.png" },
-        { id: 6, name: "Carrot", imgUrl: "src/lib/assets/items/carrot.png" },
+        { id: 1, name: "None", imgUrl: "src/lib/assets/items/default.png", bunnyURL: "src/lib/assets/bunny.png" },
+        { id: 2, name: "Tophat", imgUrl: "src/lib/assets/items/tophat.png", bunnyURL: "src/lib/assets/bunny-items/bunny-tophat.png" },
+        { id: 3, name: "Crown", imgUrl: "src/lib/assets/items/crown.png", bunnyURL: "src/lib/assets/bunny-items/bunny-crown.png" },
+        { id: 4, name: "Bow", imgUrl: "src/lib/assets/items/bow.png", bunnyURL: "src/lib/assets/bunny-items/bunny-bow.png" },
+        { id: 5, name: "Flower", imgUrl: "src/lib/assets/items/flower.png", bunnyURL: "src/lib/assets/bunny-items/bunny-flower.png" },
+        { id: 6, name: "Carrot", imgUrl: "src/lib/assets/items/carrot.png", bunnyURL: "src/lib/assets/bunny-items/bunny-carrot.png" },
     ]);
 
     const dispatch = createEventDispatcher();

@@ -1,40 +1,50 @@
-<script>
-    import { onMount } from "svelte";
+<script lang="ts">
     import { writable } from "svelte/store";
+    import { createEventDispatcher } from "svelte";
 
-    const apiUrl = "http://localhost:3013/items";
+    // Define the type for an item
+    type Item = {
+        id: number;
+        name: string;
+        imgUrl: string;
+    };
 
-    // Reactive store to hold item data
-    const items = writable([]);
+    // Item data
+    const items = writable<Item[]>([
+        { id: 1, name: "None", imgUrl: "src/lib/assets/items/default.png" },
+        { id: 2, name: "Tophat", imgUrl: "src/lib/assets/items/tophat.png" },
+        { id: 3, name: "Crown", imgUrl: "src/lib/assets/items/crown.png" },
+        { id: 4, name: "Bow", imgUrl: "src/lib/assets/items/bow.png" },
+        { id: 5, name: "Flower", imgUrl: "src/lib/assets/items/flower.png" },
+        { id: 6, name: "Carrot", imgUrl: "src/lib/assets/items/carrot.png" },
+    ]);
 
-    async function fetchItems() {
-        try {
-            const response = await fetch(`${apiUrl}`);
-            const data = await response.json();
-            items.set(data); // Set items in the store
-        } catch (err) {
-            console.error("Error fetching items:", err);
-        }
+    const dispatch = createEventDispatcher();
+
+    // Explicitly type the parameter as `Item`
+    function selectItem(item: Item) {
+        dispatch("itemSelected", item); // Notify parent
     }
-
-    onMount(() => {
-        fetchItems();
-    });
 </script>
 
 <div
     class="absolute top-1/3 right-1/4 transform -translate-y-1/2 bg-light-green rounded-3xl shadow-lg p-8 flex flex-col items-center justify-center min-w-[250px] max-w-[80%] max-h-[80%] overflow-y-auto"
-    style="width: auto;">
+    style="width: auto;"
+>
     <h2 class="text-dark-green text-xl font-bold mb-4">Pick an item:</h2>
     <div class="grid grid-cols-3 gap-4">
         {#each $items as item (item.id)}
-        <div
-            class="p-2 bg-white rounded shadow text-center"
-            class:bg-gray-200={!item.unlocked}>
-            <!-- Placeholder for item image -->
-            <img src={item.imgUrl} alt={item.name} class="w-12 h-12 mx-auto mb-2 {item.unlocked ? '' : 'opacity-50'}" />
-            <p class="text-sm">{item.unlocked ? "Unlocked" : `Unlock with ${item.cost} leaves`}</p>
-        </div>
+            <button
+                class="p-2 bg-white rounded shadow text-center cursor-pointer"
+                on:click={() => selectItem(item)}
+            >
+                <img
+                    src={item.imgUrl}
+                    alt={item.name}
+                    class="w-12 h-12 mx-auto mb-2"
+                />
+                <p class="text-sm">{item.name}</p>
+            </button>
         {/each}
     </div>
 </div>

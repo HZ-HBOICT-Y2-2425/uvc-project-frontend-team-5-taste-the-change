@@ -62,7 +62,7 @@
         alt="CO2 news updates"
         class="w-40 h-auto mx-auto mb-2"
       />
-      <p slot="title">Co2 news updates</p>
+      <p slot="title" class="text-xl font-bold m-2">Co2 news updates</p>
       <p slot="description">Stay informed with the latest on global CO₂ emissions.</p>
     </InfoBox>
     <InfoBox>
@@ -72,7 +72,7 @@
         alt="Track your impact"
         class="w-40 h-auto mx-auto mb-2"
       />
-      <p slot="title">Track your impact</p>
+      <p slot="title" class="text-xl font-bold m-2">Track your impact</p>
       <p slot="description">See how your food choices affect the planet with clear statistics.</p>
     </InfoBox>
     <InfoBox>
@@ -82,7 +82,7 @@
         alt="Customize Rabbit"
         class="w-40 h-auto mx-auto mb-2"
       />
-      <p slot="title">Customize your rabbit</p>
+      <p slot="title" class="text-xl font-bold m-2">Customize your rabbit</p>
       <p slot="description">Personalize your rabbit and make it uniquely yours.</p>
     </InfoBox>
     <InfoBox>
@@ -92,7 +92,7 @@
         alt="Earn leaves"
         class="w-40 h-auto mx-auto mb-2"
       />
-      <p slot="title">Earn Leaves</p>
+      <p slot="title" class="text-xl font-bold m-2">Earn Leaves</p>
       <p slot="description">Complete tasks, earn leaves, decorate your rabbit, and compete with friends.</p>
     </InfoBox>
   </section>

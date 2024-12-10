@@ -1,20 +1,25 @@
 <script>
   import logo from '$lib/assets/logo.png';
-  import healthyFood from '$lib/assets/healthyFood.png'
-  import earth from '$lib/assets/earth.png'
-  import person from '$lib/assets/person.png'
+  import healthyFood from '$lib/assets/about/healthyFood.png'
+  import earth from '$lib/assets/about/earth.png'
+  import person from '$lib/assets/about/person.png'
 
   import InfoBox from "$lib/components/infoBox.svelte";
-  import explanationLeaf from '$lib/assets/explanationLeaf.png'
-  import co2Cloud from '$lib/assets/co2Cloud.png'
-  import paint from '$lib/assets/paint.png'
-  import soil from '$lib/assets/soil.png'
+  import explanationLeaf from '$lib/assets/about/explanationLeaf.png'
+  import co2Cloud from '$lib/assets/about/co2Cloud.png'
+  import paint from '$lib/assets/about/paint.png'
+  import soil from '$lib/assets/about/soil.png'
 
-  import detailedEarth from '$lib/assets/detailedEarth.png'
+  import personalBenefit from '$lib/assets/about/personalBenefit.png'
+  import refresh from '$lib/assets/about/refresh.png'
+  import target from '$lib/assets/about/target.png'
+  import cookBook from '$lib/assets/about/cookBook.png'
+
+  import detailedEarth from '$lib/assets/about/detailedEarth.png'
 </script>
 
 <div class="container w-full mx-auto">
-  <section class="grid grid-cols-2 m-10 p-3">
+  <section class="grid grid-cols-2 m-10 p-3 pb-10">
     <div class="col-span-1 m-3">
       <div class="flex-col justify-start items-start inline-flex m-3 mt-44">
         <div class="justify-center items-center inline-flex">
@@ -57,7 +62,7 @@
     </div>
   </section>
 
-  <section class="flex space-x-4 p-5">
+  <section class="flex space-x-4 p-5 pt-10 pb-10">
     <InfoBox>
       <img
         slot="image"
@@ -100,7 +105,38 @@
     </InfoBox>
   </section>
 
-  <section class="grid grid-cols-2 m-4 p-3">
+  <section class="grid grid-cols-3 m-3 p-3 pt-10 pb-10">
+    <img src={personalBenefit} alt="bowl of food" class="col-span-1 rounded-2xl">
+    <div class="col-span-2 p-5">
+      <h3 class="text-3xl font-bold m-7">How Can This Website Make a Difference in Your Life?</h3>
+
+      <div class="bg-white p-4 rounded-lg shadow-md text-center m-3 grid grid-cols-6">
+        <img src={refresh} alt="refresh icon" class="col-span-1">
+        <div class="col-span-5">
+          <h4 class="text-xl font-bold text-start">Reduce Your CO2 Footprint</h4>
+          <p class="text-[#666666] text-start">Make simple changes in your diet to help fight climate change.</p>
+        </div>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md text-center m-3 grid grid-cols-6">
+        <img src={target} alt="target icon" class="col-span-1">
+        <div class="col-span-5">
+          <h4 class="text-xl font-bold text-start">Fun and Engaging Challenges</h4>
+          <p class="text-[#666666] text-start">Stay motivated with weekly goals, rewards, and a playful mascot that makes 
+            sustainability enjoyable.</p>
+        </div>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md text-center m-3 grid grid-cols-6">
+        <img src={cookBook} alt="cookbook icon col-span-1">
+        <div class="col-span-5">
+          <h4 class="text-xl font-bold text-start">Delicious Eco-friendly recipes</h4>
+          <p class="text-[#666666] text-start">Explore a wide range of recipes tailored to your diet, making it easy to eat 
+            sustainably without compromising on taste.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid grid-cols-2 m-3 p-3 pt-10 pb-10">
     <div class="col-span-1 pt-12">
       <h3 class="text-3xl font-bold">How it helps our Planet?</h3>
       <p>

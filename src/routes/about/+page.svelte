@@ -9,12 +9,14 @@
   import co2Cloud from '$lib/assets/co2Cloud.png'
   import paint from '$lib/assets/paint.png'
   import soil from '$lib/assets/soil.png'
+
+  import detailedEarth from '$lib/assets/detailedEarth.png'
 </script>
 
 <div class="container w-full mx-auto">
   <section class="grid grid-cols-2 m-10 p-3">
     <div class="col-span-1 m-3">
-      <div class="flex-col justify-start items-start inline-flex m-3 mt-52">
+      <div class="flex-col justify-start items-start inline-flex m-3 mt-44">
         <div class="justify-center items-center inline-flex">
           <h2 class="text-center text-[#2d2d2d] text-5xl font-bold">Taste</h2>
         </div>
@@ -54,6 +56,7 @@
       </div>
     </div>
   </section>
+
   <section class="flex space-x-4 p-5">
     <InfoBox>
       <img
@@ -95,5 +98,21 @@
       <p slot="title" class="text-xl font-bold m-2">Earn Leaves</p>
       <p slot="description">Complete tasks, earn leaves, decorate your rabbit, and compete with friends.</p>
     </InfoBox>
+  </section>
+
+  <section class="grid grid-cols-2 m-4 p-3">
+    <div class="col-span-1">
+      <h3 class="text-3xl font-bold">How it helps Planet?</h3>
+      <p>
+        In essence, making dietary changes towards more plant-based options can play a pivotal role in mitigating climate change, 
+        conserving natural resources, protecting ecosystems, and fostering a healthier planet for future generations.
+      </p>
+    </div>
+    <div class="col-span-1 relative p-10 m-3">
+      <div class="bg-[#AAF884] skew-y-12 relative left-20 w-3/4 h-80 top-8 flex justify-center items-center p-5 z-0 m-5"></div>
+      <img src={detailedEarth} alt="planet earth" class="top-5 z-10 absolute right-36 scale-100">
+    </div>
+    
+
   </section>
 </div>

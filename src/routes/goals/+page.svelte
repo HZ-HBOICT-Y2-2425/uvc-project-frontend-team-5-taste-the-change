@@ -41,7 +41,10 @@
             </div>
             <img src="src/lib/assets/image 33.png" alt="Goals" class="w-1/3 h-full rounded-lg">
         </div>
-        <button class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full">View My Progress</button>
+        <button on:click={() => (window.location.href = '/goals/progress')}
+            class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full">
+            View My Progress
+        </button>
     </div>
 
     <!-- How to Use Your Leaves Section -->

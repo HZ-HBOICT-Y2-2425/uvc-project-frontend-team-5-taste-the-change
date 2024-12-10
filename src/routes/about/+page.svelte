@@ -101,18 +101,28 @@
   </section>
 
   <section class="grid grid-cols-2 m-4 p-3">
-    <div class="col-span-1">
-      <h3 class="text-3xl font-bold">How it helps Planet?</h3>
+    <div class="col-span-1 pt-12">
+      <h3 class="text-3xl font-bold">How it helps our Planet?</h3>
       <p>
         In essence, making dietary changes towards more plant-based options can play a pivotal role in mitigating climate change, 
         conserving natural resources, protecting ecosystems, and fostering a healthier planet for future generations.
       </p>
+
+      <ol class="list-decimal list-inside m-3 p-1">
+        <li><strong>Reduced co2 emissions:</strong> the production of meat & dairy products are a major contributor to co2 emissions.</li>
+        <li><strong>Conservation of water:</strong> animal agriculture is extremely water-intensive.</li>
+        <li><strong>Efficient land use:</strong> raising animals for food requires vast amounts of land for grazing and growing feed crops. This
+           can lead to deforrestation and habitat destruction. 
+        </li>
+        <li><strong>Enhanced food security:</strong> a plant-based diet can feed more people using the same amount of resources.</li>
+        <li><strong>Biodiversity preservation:</strong> animal agriculture is one of the leading causes of species extinction, ocean dead zones 
+          and loss of biodiversity. 
+        </li>
+      </ol>
     </div>
     <div class="col-span-1 relative p-10 m-3">
       <div class="bg-[#AAF884] skew-y-12 relative left-20 w-3/4 h-80 top-8 flex justify-center items-center p-5 z-0 m-5"></div>
       <img src={detailedEarth} alt="planet earth" class="top-5 z-10 absolute right-36 scale-100">
     </div>
-    
-
   </section>
 </div>

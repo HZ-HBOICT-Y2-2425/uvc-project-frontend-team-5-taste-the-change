@@ -30,7 +30,7 @@
   }
 </script>
 
-<div class="container mx-auto p-6">
+<div class="max-w-7xl container mx-auto p-6">
   <div class="mb-8">
     <h2 class="text-2xl font-bold mb-4">Choose Your Weekly Goals</h2>
     {#if goalPicked}
@@ -72,51 +72,53 @@
         alt="Goals"
         class="w-1/3 h-full rounded-lg"
       />
-            <img src="src/lib/assets/image 33.png" alt="Goals" class="w-1/3 h-full rounded-lg">
-        </div>
-        <button on:click={() => (window.location.href = '/goals/progress')}
-            class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full">
-            View My Progress
-        </button>
     </div>
-    <button class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full">
+
+    <button
+      on:click={() => (window.location.href = "/goals/progress")}
+      class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full"
+    >
       View My Progress
     </button>
   </div>
-  <!-- How to Use Your Leaves Section -->
-<div>
-  <h2 class="text-2xl font-bold mb-4">How to Use Your Leaves?</h2>
-  <div class="flex space-x-4">
-    <InfoBox>
-      <img
-        slot="image"
-        src="src/lib/assets/Frame 26.png"
-        alt="unlock rewards"
-        class="w-40 h-auto mx-auto mb-2"
-      />
-      <p slot="description">Exchange your leaves for exciting bonuses.</p>
-    </InfoBox>
-    <InfoBox>
-      <img
-        slot="image"
-        src="src/lib/assets/Frame 26 (1).png"
-        alt="customize mascot"
-        class="w-52 h-auto mx-auto mb-2"
-      />
-      <p slot="description">
-        Customize the mascot with fun accessories and decorations.
-      </p>
-    </InfoBox>
-    <InfoBox>
-      <img
-        slot="image"
-        src="src/lib/assets/Frame 26 (2).png"
-        alt="show progress"
-        class="w-52 h-auto mx-auto mb-2"
-      />
-      <p slot="description">
-        Show off progress, climb leaderboards, and challenge friends.
-      </p>
-    </InfoBox>
+</div>
+
+<!-- How to Use Your Leaves Section -->
+<div class="max-w-7xl container mx-auto p-6">
+  <div class="mb-8">
+    <h2 class="text-2xl font-bold mb-4">How to Use Your Leaves?</h2>
+    <div class="flex space-x-4">
+      <InfoBox>
+        <img
+          slot="image"
+          src="src/lib/assets/Frame 26.png"
+          alt="unlock rewards"
+          class="w-40 h-auto mx-auto mb-2"
+        />
+        <p slot="description">Exchange your leaves for exciting bonuses.</p>
+      </InfoBox>
+      <InfoBox>
+        <img
+          slot="image"
+          src="src/lib/assets/Frame 26 (1).png"
+          alt="customize mascot"
+          class="w-52 h-auto mx-auto mb-2"
+        />
+        <p slot="description">
+          Customize the mascot with fun accessories and decorations.
+        </p>
+      </InfoBox>
+      <InfoBox>
+        <img
+          slot="image"
+          src="src/lib/assets/Frame 26 (2).png"
+          alt="show progress"
+          class="w-52 h-auto mx-auto mb-2"
+        />
+        <p slot="description">
+          Show off progress, climb leaderboards, and challenge friends.
+        </p>
+      </InfoBox>
+    </div>
   </div>
 </div>

@@ -29,7 +29,7 @@
 </script>
 
 <div
-    class="absolute top-1/3 right-1/4 transform -translate-y-1/2 bg-light-green rounded-3xl shadow-lg p-8 flex flex-col items-center justify-center min-w-[250px] max-w-[80%] max-h-[80%] overflow-y-auto"
+    class="absolute bg-light-green rounded-3xl shadow-lg p-8 flex flex-col items-center justify-center min-w-[250px] max-w-[80%] max-h-[80%] overflow-y-auto"
     style="width: auto;"
 >
     <h2 class="text-dark-green text-xl font-bold mb-4">Pick an item:</h2>

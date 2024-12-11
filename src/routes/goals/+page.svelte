@@ -120,4 +120,3 @@
     </InfoBox>
   </div>
 </div>
-</div>

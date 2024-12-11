@@ -140,7 +140,7 @@
                             <div class="flex items-center p-3"> 
                                 <img src="{recipe.image}" alt="{recipe.name}" class="h-[100px] w-auto mr-4">
                                 <div>
-                                    <a href={'/recipes/${recipes.slug}'}>{recipe.name}</a>
+                                    <a href={`/recipes/${recipe.id}`}>{recipe.name}</a>
                                     <p class="text-sm">{recipe.description}</p>
                                     <p class="text-sm">{recipe.diet}</p>
                                     <p class="text-sm">{recipe.servings} Servings</p>

@@ -5,6 +5,9 @@
     import ClothesHanger from "$lib/assets/Hanger.png";
     import RabbitName from "$lib/components/rabbitName.svelte";
     import ClothingBox from "$lib/components/clothingBox.svelte";
+    import Articles from "$lib/components/articles.svelte";
+
+    export let data;
 
     // Define the type for an item
     type Item = {
@@ -53,7 +56,7 @@
             >
                 Show More About Website
             </button>
-            
+
             <!-- Show Clothing Box here when button is clicked -->
             {#if showClothingBox}
                 <ClothingBox on:itemSelected={handleItemSelected} />
@@ -87,4 +90,9 @@
             </div>
         </div>
     </div>
+</section>
+
+<!-- Articles Section at the Bottom -->
+<section class="w-full bg-white p-8">
+    <Articles {data} />
 </section>

@@ -102,7 +102,7 @@
               alt="Recipe Image"
             />
         <span
-          class="absolute top-14 -left-4 w-[150%] bg-green-500 text-white px-3 py-1 text-sm font-bold transform -rotate-45 origin-top-left"
+          class="absolute top-14 -left-5 w-[150%] bg-green-500 text-white px-4 py-1 text-sm font-bold transform -rotate-45 origin-top-left"
           style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
         >
           0.9 KG CO2

@@ -10,15 +10,11 @@ export async function load({ params }) {
   if (res.ok) {
     const recipe = await res.json();
     console.log('fetched recipe:', recipe)
+    return { recipe };
+  } else {
     return {
-      props: {
-        recipe
-      }
+      status: 404,
+      error: 'Recipe not found' // Return a plain string instead of an Error object
     };
-  }
-
-  return {
-    status: 404,
-    error: 'Recipe not found' // Return a plain string instead of an Error object
-  };
+  }  
 }

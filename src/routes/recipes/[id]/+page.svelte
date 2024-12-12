@@ -1,6 +1,6 @@
 <script context="module">
-  export let recipe;
-  console.log('Recipe in component:', recipe); // Log the recipe in the component
+  export let data;
+  console.log('Recipe in component:', data); // Log the recipe in the component
 
   import spaghetti from '$lib/assets/spaghetti.jpg'
 </script>
@@ -12,7 +12,7 @@
         <p class="text-white text-lg font-bold uppercase leading-tight">Back to Recipes</p>
       </button>
       <section class="m-5 p-5 lg:text-center">
-        <h2 class="text-5xl m-7">{recipe.id}</h2>
+        <h2 class="text-5xl m-7">.</h2>
         <div class="flex justify-center items-center space-x-4">
           <div></div>
           <div>3 servings</div>

@@ -1,14 +1,17 @@
 <script>
   export let data;
-  console.log('Recipe in component:', data); // Log the recipe in the component
 
-  import spaghetti from '$lib/assets/spaghetti.jpg'
+  import { goto } from '$app/navigation';
+
+  function goToRecipes() {
+    goto('/recipes');
+  }
 </script>
 
 <div class="container w-full mx-auto">
   <section>
     <div class="border border-spacing-1 border-gray-400 m-10 p-2 rounded-xl">
-      <button class="bg-[#76a4e9] rounded-3xl justify-center items-center gap-2.5 inline-flex p-3 m-3">
+      <button class="bg-[#76a4e9] rounded-3xl justify-center items-center gap-2.5 inline-flex p-3 m-3" on:click={goToRecipes}>
         <p class="text-white text-lg font-bold uppercase leading-tight">Back to Recipes</p>
       </button>
       <section class="m-5 p-5 lg:text-center">

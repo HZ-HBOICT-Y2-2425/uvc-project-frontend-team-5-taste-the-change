@@ -12,8 +12,6 @@
   let prepTime = 30;
   let onlyFavourites = false;
 
-  console.log("Data in +page.svelte:", data.data.recipes);
-
   /**
      * @type {string | any[]}c
      * sorry for the type comments, vscode is screaming at me since it

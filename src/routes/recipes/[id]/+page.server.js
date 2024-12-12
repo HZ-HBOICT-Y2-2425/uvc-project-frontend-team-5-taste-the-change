@@ -5,11 +5,8 @@ export async function load({ params }) {
   const { id } = params;
   const res = await fetch(`http://localhost:3012/recipes/${id}`);
 
-  console.log('Fetch response status:', res.status);
-
   if (res.ok) {
     const recipe = await res.json();
-    console.log('fetched recipe:', recipe)
     return { recipe };
   } else {
     return {

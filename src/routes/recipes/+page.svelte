@@ -162,7 +162,7 @@
               <p class="text-gray-600 text-sm line-clamp-3">{recipe.description}</p>
             </div>
           <div class="p-4 flex justify-end">
-            <a href="/recipe/1" class="bg-[#76A4E9] text-white px-4 py-2 rounded-full hover:bg-[#5c8cd9] transition duration-200 ease-in-out">
+            <a href={`/recipes/${recipe.id}`} class="bg-[#76A4E9] text-white px-4 py-2 rounded-full hover:bg-[#5c8cd9] transition duration-200 ease-in-out">
               View Recipe
             </a>
           </div>

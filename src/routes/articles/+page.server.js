@@ -4,7 +4,7 @@ export async function load() {
   console.log('function is called')
   try {
     console.log('Fetching pets from API...');
-    const response = await fetch('http://localhost:3011/articles/');
+    const response = await fetch('http://localhost:3013/articles/');
         
     console.log('Response status:', response.status); // Log the status of the response
         

@@ -13,7 +13,7 @@
       <h2 class="text-xl font-semibold mb-2">{article.name}</h2>
       <p class="text-gray-600 mb-4">{article.info}</p>
     </div>
-    <a href="http://localhost:5173/" class="text-blue-500 font-semibold hover:underline self-start mt-auto">
+    <a href={article.Url} class="text-blue-500 font-semibold hover:underline self-start mt-auto">
       read more &gt;
     </a>
   </div>

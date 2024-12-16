@@ -13,7 +13,7 @@
   let onlyFavourites = false;
 
   /**
-     * @type {string | any[]}c
+     * @type {string | any[]}
      * sorry for the type comments, vscode is screaming at me since it
      * forgets javascript is javascript when you do it in a .svelte page
      * that's about ittttt

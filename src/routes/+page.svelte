@@ -7,6 +7,12 @@
     import ClothingBox from "$lib/components/clothingBox.svelte";
     import Articles from "$lib/components/articles.svelte";
 
+    import { goto } from '$app/navigation';
+
+    function goToAbout() {
+      goto('/about');
+    }
+
     export let data;
 
     // Define the type for an item
@@ -53,7 +59,7 @@
             </div>
             <button
                 class="mt-6 px-[43px] py-[17px] bg-[#76a4e9] text-white text-[20px] font-extrabold font-nunito uppercase rounded-[38px] hover:bg-blue-500 transition duration-300"
-            >
+                on:click={goToAbout}>
                 Show More About Website
             </button>
 

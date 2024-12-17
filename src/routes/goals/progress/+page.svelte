@@ -34,7 +34,7 @@
 
     <div class="flex flex-col space-y-6 w-1/2 mx-auto">
         <div class="flex items-center">
-            <img src="/src/lib/assets/green-logo.png" class="w-20 h-20" />
+            <img src="/src/lib/assets/green-logo.png" alt="logo" class="w-20 h-20" />
             <div class="relative border border-green-500 rounded-lg p-4 text-green-500 bg-opacity-10 bg-green-100 ml-3">
                 <span>Every healthy choice you make is an investment in your future.</span>
             </div>
@@ -43,10 +43,10 @@
             <div class="relative border border-green-500 rounded-lg p-4 text-green-500 bg-opacity-10 bg-green-100 mr-3">
                 <span>Be kind to the Earth, one plate at a time.</span>
             </div>
-            <img src="/src/lib/assets/green-logo.png" class="w-20 h-20" />
+            <img src="/src/lib/assets/green-logo.png" alt="logo" class="w-20 h-20" />
         </div>
         <div class="flex items-center">
-            <img src="/src/lib/assets/green-logo.png" class="w-20 h-20" />
+            <img src="/src/lib/assets/green-logo.png" alt="logo" class="w-20 h-20" />
             <div class="relative border border-green-500 rounded-lg p-4 text-green-500 bg-opacity-10 bg-green-100 ml-3">
                 <span>Your progress can have a global impact on nature by reducing CO2.</span>
             </div>

@@ -36,7 +36,6 @@
         data.data.goals[index].picked = true;
         goalPicked = true; // Mark that a goal has been picked
         displayGoal.set(data.data.goals.find((goal) => goal.id === id));
-        console.log(displayGoal);
       }
     } catch (error) {
       console.log("error");

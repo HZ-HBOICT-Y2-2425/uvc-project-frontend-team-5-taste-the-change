@@ -1,117 +1,143 @@
 <script>
   // @ts-nocheck
-
-  import InfoBox from "$lib/components/infoBox.svelte";
+  
+  import { onMount } from "svelte";
+  import { pickedGoal } from "../../stores/pickedGoalStore.js"; // Import the picked goal store
   import { displayGoal } from "../../stores/goalstore.js";
-
+  import { leafAmount } from "../../stores/leafStore.js";
+  import { countdown, resetCountdown } from "../../stores/countdownStore.js";
+   import { browser } from "$app/environment";
+  
   export let data;
+  let goals = [...data.data.goals]; // Local goals array
 
   let goalPicked = false; // Track if a goal has been picked
 
-  async function pickGoal(id, index) {
-    if (goalPicked) return; // Prevent picking another goal if one is already picked
+  // Reset goals when the countdown timer hits zero
+  $: if ($countdown.total === 0) {
+    resetGoals(); // Reset all goals
+  }
 
+  onMount(() => {
+  const savedGoal = localStorage.getItem("pickedGoal");
+
+  if (savedGoal) {
+    const parsedGoal = JSON.parse(savedGoal);
+    pickedGoal.set(parsedGoal); // Set the pickedGoal store
+
+    // Synchronize the goals array with the saved picked goal
+    goals = goals.map((goal) => {
+      return goal.id === parsedGoal.id
+        ? { ...goal, picked: true } // Mark the saved goal as picked
+        : { ...goal, picked: false }; // Reset others to not picked
+    });
+  }
+});
+
+
+
+  // Function to pick a goal
+  async function pickGoal(id) {
+    if (goalPicked) return; // Prevent multiple picks
+  
     try {
-      const response = await fetch("/goals", {
+      const response = await fetch("http://localhost:3013/pick-goal/" + id, {
         method: "POST",
-        body: JSON.stringify({ id }),
+        headers: { "Content-Type": "application/json" },
       });
-
-      const result = await response.json();
+  
       if (response.ok) {
-        data.data.goals[index].picked = true;
-        goalPicked = true; // Mark that a goal has been picked
-        displayGoal.set(data.data.goals.find((goal) => goal.id === id));
-        console.log(displayGoal);
+        const updatedGoal = await response.json();
+  
+        // Update goals state
+        goals = goals.map((goal) => {
+          if (goal.id === id) {
+            goal.picked = true;
+            return { ...goal, ...updatedGoal };
+          }
+          return goal;
+        });
+  
+        goalPicked = true;
+        pickedGoal.set(updatedGoal);
+        displayGoal.set(updatedGoal);
+        resetCountdown(); // Start/reset the countdown timer
+      } else {
+        const error = await response.json();
+        if (error.error === "You can only pick one goal per week.") {
+          alert("You can only pick one goal per week!");
+        }
       }
     } catch (error) {
-      console.log("error");
+      console.error("Error picking goal:", error);
     }
+  }
+
+  // Reset all goals when countdown timer hits zero
+  function resetGoals() {
+    goals = goals.map((goal) => ({ ...goal, picked: false }));
+    pickedGoal.set(null); // Reset picked goal
+    goalPicked = false;
+    if (browser) {
+      localStorage.removeItem("pickedGoal");
+    }
+  }
+
+  // Increment leaf count
+  function increment() {
+    leafAmount.update((n) => n + 4);
+  }
+
+  // Handle button click
+  function handleClick(goalId) {
+    pickGoal(goalId);
+    increment();
   }
 </script>
 
 <div class="container mx-auto p-6">
   <div class="mb-8">
     <h2 class="text-2xl font-bold mb-4">Choose Your Weekly Goals</h2>
-    {#if goalPicked}
-      <h2>your chosen goal is: {$displayGoal.goal}</h2>
+    {#if $pickedGoal}
+      <h2 class="text-xl font-semibold mb-2">Your chosen goal is: {$pickedGoal.goal}</h2>
+      <p class="text-gray-700">
+        Countdown: 
+        <span class="font-bold">
+          {$countdown.days}d {$countdown.hours}h {$countdown.minutes}m {$countdown.seconds}s
+        </span>
+      </p>
+      <p class="text-lg font-semibold text-gray-700 mt-4">
+        You can't pick a goal anymore this week.
+      </p>
     {/if}
-    <div class="flex space-x-8 items-center">
+    <div class="flex space-x-8 items-center mt-6">
       <div class="flex-grow">
-        {#if data.data.goals.length > 0}
-          {#each data.data.goals as goal, index}
-            <div
-              class="bg-white p-7 rounded-lg shadow-md flex justify-between items-center mb-8"
-            >
-              <div>
-                <h3 class="text-green-400 font-bold">
-                  {goal.goal}
-                </h3>
-                <p class="text-gray-600">{goal.description}</p>
-              </div>
-              <button
-                class="px-4 py-1 rounded-full"
-                on:click={() => pickGoal(goal.id, index)}
-                disabled={goal.picked || goalPicked}
-                style="background-color: {goal.picked
-                  ? 'red'
-                  : 'green'}; color: white"
-              >
-                {goal.picked ? "Picked" : "Pick"}
-              </button>
+        {#each goals as goal, index}
+          <div
+            class="bg-white p-7 rounded-lg shadow-md flex justify-between items-center mb-8"
+          >
+            <div>
+              <h3 class="text-green-400 font-bold">{goal.goal}</h3>
+              <p class="text-gray-600">{goal.description}</p>
             </div>
-          {/each}
-        {:else if data.error}
-          <p class="text-red-500">Error: {data.error}</p>
-        {:else}
-          <p>Loading goals...</p>
-        {/if}
+            <button
+              class="px-4 py-2 rounded-full text-white"
+              on:click={() => handleClick(goal.id)}
+              disabled={goal.picked || $pickedGoal}
+              style="background-color: {goal.picked ? 'red' : 'green'};"
+            >
+              {goal.picked ? "Picked" : "Pick"}
+            </button>
+          </div>
+        {/each}
       </div>
-      <img
-        src="src/lib/assets/image 33.png"
-        alt="Goals"
-        class="w-1/3 h-full rounded-lg"
-      />
+      <img src="src/lib/assets/image 33.png" alt="Goals" class="w-1/3 h-full rounded-lg" />
     </div>
-    <button class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full">
+    <button
+      class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600"
+    >
       View My Progress
     </button>
   </div>
-  <!-- How to Use Your Leaves Section -->
-<div>
-  <h2 class="text-2xl font-bold mb-4">How to Use Your Leaves?</h2>
-  <div class="flex space-x-4">
-    <InfoBox>
-      <img
-        slot="image"
-        src="src/lib/assets/Frame 26.png"
-        alt="unlock rewards"
-        class="w-40 h-auto mx-auto mb-2"
-      />
-      <p slot="description">Exchange your leaves for exciting bonuses.</p>
-    </InfoBox>
-    <InfoBox>
-      <img
-        slot="image"
-        src="src/lib/assets/Frame 26 (1).png"
-        alt="customize mascot"
-        class="w-52 h-auto mx-auto mb-2"
-      />
-      <p slot="description">
-        Customize the mascot with fun accessories and decorations.
-      </p>
-    </InfoBox>
-    <InfoBox>
-      <img
-        slot="image"
-        src="src/lib/assets/Frame 26 (2).png"
-        alt="show progress"
-        class="w-52 h-auto mx-auto mb-2"
-      />
-      <p slot="description">
-        Show off progress, climb leaderboards, and challenge friends.
-      </p>
-    </InfoBox>
-  </div>
-</div>
+  <p class="mt-6 text-gray-800">Leaves Collected: <span class="font-bold">{$leafAmount}</span></p>
 </div>

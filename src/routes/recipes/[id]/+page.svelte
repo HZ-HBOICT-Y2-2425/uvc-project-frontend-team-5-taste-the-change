@@ -3,6 +3,12 @@
 
   import { goto } from '$app/navigation';
 
+  let isDone = false; 
+
+  function toggleDone() {
+    isDone = !isDone;
+  }
+
   function goToRecipes() {
     goto('/recipes');
   }
@@ -16,6 +22,14 @@
       </button>
       <section class="m-5 p-5 lg:text-center">
         <h2 class="text-5xl text-black m-7">{data.recipe.name}</h2>
+        <button 
+          class="w-[198px] h-[49px] px-6 py-3 mb-4 rounded-3xl border-2 justify-center items-center gap-2.5 inline-flex {isDone ? 'bg-[#7fb76f] border-[#7eb66f]' : 'bg-white/20 border-[#7eb66f]'}" 
+          on:click={toggleDone}>
+          <div 
+            class="text-xl font-semibold leading-tight {isDone ? 'text-white font-bold' : 'text-[#2d2d2d]'}">
+            {isDone ? 'Done' : 'Not Done Yet'}
+          </div>
+        </button>
         <div class="flex justify-center items-center space-x-4">
           <div>{data.recipe.time} minutes</div>
           <div>{data.recipe.servings} portions</div>

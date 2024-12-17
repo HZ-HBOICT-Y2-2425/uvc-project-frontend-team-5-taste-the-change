@@ -22,6 +22,15 @@
   function goToRecipes() {
     goto('/recipes');
   }
+  function goToStatistics() {
+    goto('/statistics');
+  }
+  function goToGoals() {
+    goto('/goals');
+  }
+  function goToHome() {
+    goto('/');
+  }
 </script>
 
 <div class="container w-full mx-auto">
@@ -83,6 +92,7 @@
         />
         <div slot="title" class="text-xl font-bold m-2">Co2 news updates</div>
         <div slot="description">Stay informed with the latest on global CO₂ emissions.</div>
+        <button slot="button" on:click={goToHome}>Learn More</button>
       </InfoBox>
       <InfoBox>
         <img
@@ -93,6 +103,7 @@
         />
         <div slot="title" class="text-xl font-bold m-2">Track your impact</div>
         <div slot="description">See how your food choices affect the planet with clear statistics.</div>
+        <button slot="button" on:click={goToStatistics}>Learn More</button>
       </InfoBox>
       <InfoBox>
         <img
@@ -103,6 +114,7 @@
         />
         <div slot="title" class="text-xl font-bold m-2">Customize your rabbit</div>
         <div slot="description">Personalize your rabbit and make it uniquely yours.</div>
+        <button slot="button" on:click={goToHome}>Learn More</button>
       </InfoBox>
       <InfoBox>
         <img
@@ -113,6 +125,7 @@
         />
         <div slot="title" class="text-xl font-bold m-2">Earn Leaves</div>
         <div slot="description">Complete tasks, earn leaves, decorate your rabbit, and compete with friends.</div>
+        <button slot="button" on:click={goToGoals}>Learn More</button>
       </InfoBox>
     </section>
 

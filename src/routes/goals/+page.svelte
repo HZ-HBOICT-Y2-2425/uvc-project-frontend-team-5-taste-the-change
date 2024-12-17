@@ -4,6 +4,20 @@
   import InfoBox from "$lib/components/infoBox.svelte";
   import { displayGoal } from "../../stores/goalstore.js";
 
+  import badge from '$lib/assets/goals/badge.png'
+  import wallpaper from '$lib/assets/goals/wallpaper.png'
+  import leaderboard from '$lib/assets/goals/leaderboard.png'
+
+  import { goto } from '$app/navigation';
+
+  function goToHome() {
+    goto('/');
+  }
+
+  function goToLeaderboard() {
+    goto('/leaderboard');
+  }
+
   export let data;
 
   let goalPicked = false; // Track if a goal has been picked
@@ -91,33 +105,35 @@
       <InfoBox>
         <img
           slot="image"
-          src="src/lib/assets/Frame 26.png"
-          alt="unlock rewards"
+          src={badge}
+          alt="badge"
           class="w-40 h-auto mx-auto mb-2"
         />
-        <p slot="description">Exchange your leaves for exciting bonuses.</p>
+        <div slot="title" class="text-xl font-bold m-2">Earn Rewards</div>
+        <div slot="description">Exchange your leaves for exciting bonuses.</div>
+        <button slot="button" on:click={goToHome}>Learn More</button>
       </InfoBox>
       <InfoBox>
         <img
           slot="image"
-          src="src/lib/assets/Frame 26 (1).png"
-          alt="customize mascot"
-          class="w-52 h-auto mx-auto mb-2"
+          src={wallpaper}
+          alt="wallpaper"
+          class="w-40 h-auto mx-auto mb-2"
         />
-        <p slot="description">
-          Customize the mascot with fun accessories and decorations.
-        </p>
+        <div slot="title" class="text-xl font-bold m-2">Customize your rabbit</div>
+        <div slot="description"> Customize your mascot with fun accessories and decorations.</div>
+        <button slot="button" on:click={goToHome}>Learn More</button>
       </InfoBox>
       <InfoBox>
         <img
           slot="image"
-          src="src/lib/assets/Frame 26 (2).png"
-          alt="show progress"
-          class="w-52 h-auto mx-auto mb-2"
+          src={leaderboard}
+          alt="leaderboard"
+          class="w-40 h-auto mx-auto mb-2"
         />
-        <p slot="description">
-          Show off progress, climb leaderboards, and challenge friends.
-        </p>
+        <div slot="title" class="text-xl font-bold m-2">Compete with other users</div>
+        <div slot="description">Climb the leaderboard and show off your progress</div>
+        <button slot="button" on:click={goToLeaderboard}>Learn More</button>
       </InfoBox>
     </div>
   </div>

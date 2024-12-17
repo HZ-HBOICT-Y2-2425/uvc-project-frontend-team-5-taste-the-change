@@ -2,8 +2,8 @@
     <slot name="image"></slot>
     <div><slot name="title"></slot></div>
     <div><slot name="description"></slot></div>
-    <button
+    <button 
         class="mt-2 bg-white border border-blue-500 text-blue-500 px-4 py-1 rounded-full"
-        >Learn More</button
+        ><slot name="button"></slot></button
     >
 </div>

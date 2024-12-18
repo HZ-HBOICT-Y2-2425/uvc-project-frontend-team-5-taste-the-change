@@ -1,9 +1,14 @@
 <script lang="ts">
+// @ts-nocheck
     import "../app.css";
     import background from "$lib/assets/background-rabbit.png";
     import bunny from "$lib/assets/Bunny.png";
     import ClothesHanger from "$lib/assets/Hanger.png";
     import RabbitName from "$lib/components/rabbitName.svelte";
+
+    import { leafAmount } from "../stores/leafStore";
+    import { displayGoal } from "../stores/goalstore";
+
     import ClothingBox from "$lib/components/clothingBox.svelte";
     import Articles from "$lib/components/articles.svelte";
 
@@ -30,6 +35,10 @@
     function handleItemSelected(event: CustomEvent<Item>) {
         selectedItem = event.detail;
         showClothingBox = false;
+    }
+
+    function increment() {
+    leafAmount.update(n => n + 6); // Use the update method to increment
     }
 </script>
 
@@ -96,6 +105,16 @@
             </div>
         </div>
     </div>
+</section>
+
+<section>
+    <!-- Centered Text on the Left -->
+    <div
+        class="absolute top-1/2 left-10 transform -translate-y-1/2 text-white text-left font-poppins font-bold text-[48px] leading-[57.6px]">
+        (amount) of CO2 was saved by this website
+    </div>
+    <button on:click={increment()}>click</button>
+    <p>{$leafAmount}</p>
 </section>
 
 <!-- Articles Section at the Bottom -->

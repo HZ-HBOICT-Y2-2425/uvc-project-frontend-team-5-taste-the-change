@@ -9,7 +9,7 @@ export async function load() {
     const data = await response.json();
     const recipes = data.recipes;
 
-    return { data: { recipes } }; // Ensure returning the correct data structure
+    return {data: { recipes: data }} ; // Ensure returning the correct data structure
   } catch (error) {
     console.error('Error fetching recipes:', error); // Log any errors
     return {

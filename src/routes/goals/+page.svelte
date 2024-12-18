@@ -145,15 +145,18 @@
           </div>
         {/each}
       </div>
-      <img src="src/lib/assets/image 33.png" alt="Goals" class="w-1/3 h-full rounded-lg"
+      <img src="src/lib/assets/image 33.png" alt="Goals" class="w-1/3 h-full rounded-lg">
 
-    <button
+      <button 
+      class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600" 
       on:click={() => (window.location.href = "/goals/progress")}
-      class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600"
-    >
+  >
       View My Progress
-    </button>
+  </button>
+  
   </div>
+</div>
+</div>
 
   <p class="mt-6 text-gray-800">Leaves Collected: <span class="font-bold">{$leafAmount}</span></p>
   

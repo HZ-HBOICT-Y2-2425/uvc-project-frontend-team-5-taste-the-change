@@ -42,7 +42,7 @@
             legend: { display: false },
             title: {
               display: true,
-              text: 'Monthly CO2 Emissions (in ',
+              text: 'Monthly CO2 Emissions',
             },
             annotation: {
               annotations: {

@@ -108,12 +108,7 @@
 </section>
 
 <section>
-    <!-- Centered Text on the Left -->
-    <div
-        class="absolute top-1/2 left-10 transform -translate-y-1/2 text-white text-left font-poppins font-bold text-[48px] leading-[57.6px]">
-        (amount) of CO2 was saved by this website
-    </div>
-    <button on:click={increment()}>click</button>
+    <button on:click={increment}>click</button>
     <p>{$leafAmount}</p>
 </section>
 

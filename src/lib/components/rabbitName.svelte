@@ -7,9 +7,7 @@
     }
 </script>
 
-
-
-<div class="absolute top-3/4 right-20 transform -translate-y-1/2 w-80">
+<div class="absolute top-3/4 right-20 transform -translate-y-2/4 w-80">
     <h2 class="text-white text-2xl font-bold mb-2 text-center">
         Pick a name for your rabbit
     </h2>

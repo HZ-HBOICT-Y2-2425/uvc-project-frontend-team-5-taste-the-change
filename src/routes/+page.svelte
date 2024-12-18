@@ -1,17 +1,40 @@
-<script>
+<script lang="ts">
 // @ts-nocheck
-
     import "../app.css";
     import background from "$lib/assets/background-rabbit.png";
     import bunny from "$lib/assets/Bunny.png";
+    import ClothesHanger from "$lib/assets/Hanger.png";
     import RabbitName from "$lib/components/rabbitName.svelte";
+
     import { leafAmount } from "../stores/leafStore";
     import { displayGoal } from "../stores/goalstore";
 
-    let showClothingBox = false;
+    import ClothingBox from "$lib/components/clothingBox.svelte";
+    import Articles from "$lib/components/articles.svelte";
 
-    function toggleClothingBox() {
-        showClothingBox = !showClothingBox;
+    import { goto } from '$app/navigation';
+
+    function goToAbout() {
+      goto('/about');
+    }
+
+    export let data;
+
+    // Define the type for an item
+    type Item = {
+        id: number;
+        name: string;
+        imgUrl: string;
+        bunnyURL: string;
+    };
+
+    let showClothingBox = false;
+    let selectedItem: Item | null = null;
+
+    // Event handler for item selection
+    function handleItemSelected(event: CustomEvent<Item>) {
+        selectedItem = event.detail;
+        showClothingBox = false;
     }
 
     function increment() {
@@ -19,79 +42,72 @@
     }
 </script>
 
-<section class="relative">
-    <!-- Background Image with Gradient -->
+<section class="relative flex w-full h-[75vh]">
+    <!-- Full Background Image -->
     <div
-        class="w-full h-[75vh] bg-cover bg-center"
+        class="absolute inset-0 w-full h-full bg-cover bg-center z-0"
         style="background-image: 
             linear-gradient(to bottom, #03091236, #1F334A36, #6393D736),
             linear-gradient(#05060961, #05060961),
             url({background});"
     ></div>
 
-    <!-- Rabbit box -->
-    <div
-        class="absolute top-1/3 right-20 transform -translate-y-1/2 bg-dark-green rounded-3xl shadow-lg p-8 flex flex-col items-center justify-center"
-        style="width: 320px; height: 320px;">
-        <img src={bunny} alt="Bunny" class="w-2/3 transform scale-x-[-1]" />
-        <!-- Button with clothes hanger -->
-        <button
-            class="absolute top-4 right-4 bg-white text-dark-green rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-gray-200 transition duration-300"
-            on:click={toggleClothingBox}>
-            <!-- <img src="/path-to-clothes-hanger-icon.svg" alt="Clothes Hanger" class="w-6 h-6" /> -->
-        </button>
-    </div>
+    <!-- Overlay for Header Content -->
+    <div class="relative flex flex-row w-full h-full z-10">
+        <!-- Column 1: CO2 Saving Stats -->
+        <div class="flex flex-col justify-center items-center w-1/2 px-8">
+            <div
+                class="text-[#aaf884] text-[96px] font-bold font-nunito leading-[115.2px]"
+            >
+                33.6 kg
+            </div>
+            <div
+                class="text-[#fdfeff] text-[40px] font-bold font-nunito leading-[57.6px]"
+            >
+                Of CO2 was saved <br /> by this website
+            </div>
+            <button
+                class="mt-6 px-[43px] py-[17px] bg-[#76a4e9] text-white text-[20px] font-extrabold font-nunito uppercase rounded-[38px] hover:bg-blue-500 transition duration-300"
+                on:click={goToAbout}>
+                Show More About Website
+            </button>
 
-    <!-- Clothing Box -->
-    {#if showClothingBox}
-    <div
-        class="absolute top-1/3 right-[25%] transform -translate-y-1/2 bg-light-green rounded-3xl shadow-lg p-8 flex flex-col items-center justify-center overflow-y-auto"
-        style="width: 320px; height: 400px;">
-        <h2 class="text-dark-green text-xl font-bold mb-4">Pick an item:</h2>
-        <div class="grid grid-cols-3 gap-4">
-            <div class="p-2 bg-white rounded shadow text-center">
-                <!-- <img src="/path-to-item1.png" alt="Item 1" class="w-12 h-12 mx-auto mb-2" /> -->
-                <p class="text-sm">Unlocked</p>
+            <!-- Show Clothing Box here when button is clicked -->
+            {#if showClothingBox}
+                <ClothingBox on:itemSelected={handleItemSelected} />
+            {/if}
+        </div>
+
+        <!-- Column 2: Rabbit Box and Name -->
+        <div class="flex flex-col justify-center items-center w-1/2 px-8">
+            <!-- Rabbit box -->
+            <div
+                class="relative flex flex-col p-8 items-center justify-center bg-dark-green rounded-3xl shadow-lg"
+            >
+                <!-- Show selected item or default bunny -->
+                <img
+                    src={selectedItem ? selectedItem.bunnyURL : bunny}
+                    alt="Bunny"
+                    class="w-2/3 transform scale-x-[-1]"
+                />
+                <!-- Button with clothes hanger -->
+                <button
+                    class="absolute top-4 right-4 bg-white text-dark-green rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-gray-200 transition duration-300"
+                    on:click={() => (showClothingBox = !showClothingBox)}
+                >
+                    <img src={ClothesHanger} alt="Clothes Hanger" />
+                </button>
             </div>
-            <div class="p-2 bg-gray-200 rounded shadow text-center">
-                <!-- <img src="/path-to-item2.png" alt="Item 2" class="w-12 h-12 mx-auto mb-2 opacity-50" /> -->
-                <p class="text-sm">Unlock with<br />60 leaves</p>
-            </div>
-            <div class="p-2 bg-gray-200 rounded shadow text-center">
-                <!-- <img src="/path-to-item2.png" alt="Item 2" class="w-12 h-12 mx-auto mb-2 opacity-50" /> -->
-                <p class="text-sm">Unlock with<br />70 leaves</p>
-            </div>
-            <div class="p-2 bg-gray-200 rounded shadow text-center">
-                <!-- <img src="/path-to-item2.png" alt="Item 2" class="w-12 h-12 mx-auto mb-2 opacity-50" /> -->
-                <p class="text-sm">Unlock with<br />80 leaves</p>
-            </div>
-            <div class="p-2 bg-gray-200 rounded shadow text-center">
-                <!-- <img src="/path-to-item2.png" alt="Item 2" class="w-12 h-12 mx-auto mb-2 opacity-50" /> -->
-                <p class="text-sm">Unlock with<br />90 leaves</p>
-            </div>
-            <div class="p-2 bg-gray-200 rounded shadow text-center">
-                <!-- <img src="/path-to-item2.png" alt="Item 2" class="w-12 h-12 mx-auto mb-2 opacity-50" /> -->
-                <p class="text-sm">Unlock with<br />100 leaves</p>
-            </div>
-            <div class="p-2 bg-gray-200 rounded shadow text-center">
-                <!-- <img src="/path-to-item2.png" alt="Item 2" class="w-12 h-12 mx-auto mb-2 opacity-50" /> -->
-                <p class="text-sm">Unlock with<br />110 leaves</p>
-            </div>
-            <div class="p-2 bg-gray-200 rounded shadow text-center">
-                <!-- <img src="/path-to-item2.png" alt="Item 2" class="w-12 h-12 mx-auto mb-2 opacity-50" /> -->
-                <p class="text-sm">Unlock with<br />120 leaves</p>
-            </div>
-            <div class="p-2 bg-gray-200 rounded shadow text-center">
-                <!-- <img src="/path-to-item2.png" alt="Item 2" class="w-12 h-12 mx-auto mb-2 opacity-50" /> -->
-                <p class="text-sm">Unlock with<br />130 leaves</p>
+
+            <!-- Pick a Name for Your Rabbit -->
+            <div class="mt-6">
+                <RabbitName />
             </div>
         </div>
     </div>
-    {/if}
+</section>
 
-    <!-- Pick a Name for Your Rabbit Box -->
-    <RabbitName />
-
+<section>
     <!-- Centered Text on the Left -->
     <div
         class="absolute top-1/2 left-10 transform -translate-y-1/2 text-white text-left font-poppins font-bold text-[48px] leading-[57.6px]">
@@ -99,4 +115,9 @@
     </div>
     <button on:click={increment()}>click</button>
     <p>{$leafAmount}</p>
+</section>
+
+<!-- Articles Section at the Bottom -->
+<section class="w-full bg-white p-8">
+    <Articles {data} />
 </section>

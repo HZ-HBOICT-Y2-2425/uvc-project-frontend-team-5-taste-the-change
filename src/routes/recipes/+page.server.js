@@ -1,19 +1,13 @@
-console.log('Load function runs on server');
-
 export async function load() {
-  console.log('function is called')
   try {
-    console.log('Fetching pets from API...');
     const response = await fetch('http://localhost:3012/recipes/');
-        
-    console.log('Response status:', response.status); // Log the status of the response
         
     if (!response.ok) {
       throw new Error('Failed to fetch recipes');
     }
 
     const data = await response.json();
-    console.log('Fetched recipes:', data); // Log the fetched pets
+    const recipes = data.recipes;
 
     return {data: { recipes: data }} ; // Ensure returning the correct data structure
   } catch (error) {

@@ -4,11 +4,26 @@
   import { onMount } from "svelte";
   import { pickedGoal } from "../../stores/pickedGoalStore.js"; // Import the picked goal store
   import { displayGoal } from "../../stores/goalstore.js";
+
   import { leafAmount } from "../../stores/leafStore.js";
   import { countdown, resetCountdown } from "../../stores/countdownStore.js";
-   import { browser } from "$app/environment";
+  import { browser } from "$app/environment";
   import InfoBox from "$lib/components/infoBox.svelte";
-  
+
+  import badge from '$lib/assets/goals/badge.png'
+  import wallpaper from '$lib/assets/goals/wallpaper.png'
+  import leaderboard from '$lib/assets/goals/leaderboard.png'
+
+  import { goto } from '$app/navigation';
+
+  function goToHome() {
+    goto('/');
+  }
+
+  function goToLeaderboard() {
+    goto('/leaderboard');
+  }
+
   export let data;
   let goals = [...data.data.goals]; // Local goals array
 
@@ -34,8 +49,6 @@
     });
   }
 });
-
-
 
   // Function to pick a goal
   async function pickGoal(id) {
@@ -96,7 +109,7 @@
   }
 </script>
 
-<div class="container mx-auto p-6">
+<div class="max-w-7xl container mx-auto p-6">
   <div class="mb-8">
     <h2 class="text-2xl font-bold mb-4">Choose Your Weekly Goals</h2>
     {#if $pickedGoal}
@@ -132,33 +145,57 @@
           </div>
         {/each}
       </div>
-      <img src="src/lib/assets/image 33.png" alt="Goals" class="w-1/3 h-full rounded-lg" />
-    </div>
+      <img src="src/lib/assets/image 33.png" alt="Goals" class="w-1/3 h-full rounded-lg"
+
     <button
+      on:click={() => (window.location.href = "/goals/progress")}
       class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600"
     >
       View My Progress
     </button>
   </div>
+
   <p class="mt-6 text-gray-800">Leaves Collected: <span class="font-bold">{$leafAmount}</span></p>
   
-<div>
-  <h2 class="text-2xl font-bold mb-4">How to Use Your Leaves?</h2>
-  <div class="flex space-x-4">
-      <InfoBox>
-          <img slot="image" src="src/lib/assets/Frame 26.png" alt="unlock rewards" class="w-40 h-auto mx-auto mb-2">
-          <p slot="description">Exchange your leaves for exciting bonuses.</p>
-      </InfoBox>
-      <InfoBox>
-          <img slot="image" src="src/lib/assets/Frame 26 (1).png" alt="customize mascot" class="w-52 h-auto mx-auto mb-2">
-          <p slot="description">Customize the mascot with fun accessories and decorations.</p>
-      </InfoBox>
-      <InfoBox>
-          <img slot="image" src="src/lib/assets/Frame 26 (2).png" alt="show progress" class="w-52 h-auto mx-auto mb-2">
-          <p slot="description">Show off progress, climb leaderboards, and challenge friends.</p>
-      </InfoBox>
+  <!-- How to Use Your Leaves Section -->
+  <div class="max-w-7xl container mx-auto p-6">
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold mb-4">How to Use Your Leaves?</h2>
+      <div class="flex space-x-4">
+        <InfoBox>
+          <img
+            slot="image"
+            src={badge}
+            alt="badge"
+            class="w-40 h-auto mx-auto mb-2"
+          />
+          <div slot="title" class="text-xl font-bold m-2">Earn Rewards</div>
+          <div slot="description">Exchange your leaves for exciting bonuses.</div>
+          <button slot="button" on:click={goToHome}>Learn More</button>
+        </InfoBox>
+        <InfoBox>
+          <img
+            slot="image"
+            src={wallpaper}
+            alt="wallpaper"
+            class="w-40 h-auto mx-auto mb-2"
+          />
+          <div slot="title" class="text-xl font-bold m-2">Customize your rabbit</div>
+          <div slot="description"> Customize your mascot with fun accessories and decorations.</div>
+          <button slot="button" on:click={goToHome}>Learn More</button>
+        </InfoBox>
+        <InfoBox>
+          <img
+            slot="image"
+            src={leaderboard}
+            alt="leaderboard"
+            class="w-40 h-auto mx-auto mb-2"
+          />
+          <div slot="title" class="text-xl font-bold m-2">Compete with other users</div>
+          <div slot="description">Climb the leaderboard and show off your progress</div>
+          <button slot="button" on:click={goToLeaderboard}>Learn More</button>
+        </InfoBox>
+      </div>
+    </div>
   </div>
-</div>
-
-</div>
 

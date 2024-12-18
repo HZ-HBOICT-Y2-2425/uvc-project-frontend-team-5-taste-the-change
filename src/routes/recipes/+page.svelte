@@ -12,10 +12,8 @@
   let prepTime = 30;
   let onlyFavourites = false;
 
-  console.log("Data in +page.svelte:", data.data.recipes);
-
   /**
-     * @type {string | any[]}c
+     * @type {string | any[]}
      * sorry for the type comments, vscode is screaming at me since it
      * forgets javascript is javascript when you do it in a .svelte page
      * that's about ittttt
@@ -129,34 +127,48 @@
     </aside>
 
     <div class="w-3/4">
-      <h2 class="text-3xl">Recipes matching description: {filteredRecipes.length}</h2>
-      {#if filteredRecipes.length > 0}
-      <ul>
-        {#each filteredRecipes as recipe}
-              <div class="container w-full m-5">
-                <section>
-                    <div class="w-[1150px] h-auto p-2">
-                        <div class="bg-green-50 rounded-lg border-2 border-black h-auto mt-3 mb-3">
-                            <div class="flex items-center p-3"> 
-                                <img src="{recipe.image}" alt="{recipe.name}" class="h-[100px] w-auto mr-4">
-                                <div>
-                                    <h3 class="text-xl">{recipe.name}</h3>
-                                    <p class="text-sm">{recipe.description}</p>
-                                    <p class="text-sm">{recipe.diet}</p>
-                                    <p class="text-sm">{recipe.servings} Servings</p>
-                                    <p class="text-sm">{recipe.emission_per_meal} Kg CO2</p>
-                                    <p class="text-sm">{recipe.time} minutes</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-              </div>
-          {/each}
-        </ul>
-      {:else}
-        <p>No recipes found.</p>
-      {/if}
+      <h2 class="text-sm mb-4">Recipes matching description: {filteredRecipes.length}</h2>
+      <div class="grid grid-cols-3 gap-6">
+        {#each filteredRecipes as recipe, index}
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden relative">
+          <div class="relative">
+            <img
+              class="w-full h-48 object-cover"
+              src={recipe.image}
+              alt={recipe.name}
+            />
+           <span
+             class="absolute top-14 translate-y-2 -left-5 w-[150%] bg-green-500 text-white px-5 py-1 text-sm font-bold transform -rotate-45 origin-top-left"
+            >
+              {recipe.emission_per_meal} KG CO2
+            </span>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold text-center mb-4">{recipe.name}</h3>
+            <div class="flex justify-center space-x-4 text-xs text-gray-600 mb-4">
+              <p class="flex items-center space-x-1">
+                <span>⏱</span>
+                <span>{recipe.time} min</span>
+              </p>
+              <p class="flex items-center space-x-1">
+                <span>🍴</span>
+                <span>{recipe.servings} servings</span>
+              </p>
+              <p class="flex items-center space-x-1">
+                <span>🥗</span>
+                <span>{recipe.diet}</span>
+              </p>
+            </div>
+              <p class="text-gray-600 text-sm line-clamp-3">{recipe.description}</p>
+            </div>
+          <div class="p-4 flex justify-end">
+            <a href={`/recipes/${recipe.id}`} class="bg-[#76A4E9] text-white px-4 py-2 rounded-full hover:bg-[#5c8cd9] transition duration-200 ease-in-out">
+              View Recipe
+            </a>
+          </div>
+        </div>
+        {/each}
+      </div>
     </div>
   </section>
 </div>

@@ -26,6 +26,6 @@
 	</main>
 
 	<footer class="bg-light-green">
-		<p class="p-2 text-center">Footer</p>
+		<p class="p-2 text-center">V2.0</p>
 	</footer>
 </div>

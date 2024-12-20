@@ -7,7 +7,6 @@ export async function load() {
     }
 
     const data = await response.json();
-    const recipes = data.recipes;
 
     return {data: { recipes: data }} ; // Ensure returning the correct data structure
   } catch (error) {

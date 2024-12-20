@@ -108,8 +108,7 @@
 </section>
 
 <section>
-    <!-- Centered Text on the Left -->
-    <button on:click={increment()}>click</button>
+    <button on:click={increment}>click</button>
     <p>{$leafAmount}</p>
 </section>
 

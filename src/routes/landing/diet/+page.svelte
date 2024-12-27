@@ -1,8 +1,17 @@
+<script>
+  import { goto } from '$app/navigation';
+
+  function goToHome() {
+    goto('/');
+  }
+</script>
+
 <div class="container w-full mx-auto">
   <div class="relative w-full h-full">
     <section class="pt-10 p-3 text-center">
       <h1 class="text-5xl font-bold">Choose your diet goal</h1>
       <p class="p-3">Which diet do you wish to achieve?</p>
+      <button class="bg-[#76A4E9] text-white rounded-full mt-5 px-4 py-2" on:click={goToHome}>Confirm diet choice</button>
     </section>
     <section class="p-10 grid grid-cols-3 gap-6">
       <button class="bg-white m-3 text-center p-3 focus:bg-[#d9fdca] rounded-2xl focus:shadow-sm focus:shadow-black">

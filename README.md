@@ -1,38 +1,47 @@
-# sv
+# Frontend Sveltekit Project
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Overview
+This project, Taste the Change, consists of a frontend built with SvelteKit & TailwindCSS. 
 
-## Creating a project
+## Architecture
+The project is structured as follows:
 
-If you're seeing this, you've probably already done this step. Congrats!
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Features
 
-# create a new project in my-app
-npx sv create my-app
-```
 
-## Developing
+## Technologies Used
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Getting Started
+### Prerequisites
 
-```bash
-npm run dev
+### Running the Project
+1. Clone the repository:
+    ```bash
+    git clone <repository-url>
+    cd <repository-folder>
+    ```
+2. Install node modules:
+    ```bash
+    npm install
+    ```
+3. (Optional) If you run into any errors on step 2:
+    ```bash
+    npm audit fix
+    ```
+4. Start the application:
+    ```bash
+    npm run dev
+    ```
+5. Access the application:
+    - Taste the Change website: `http://localhost:5173`
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### Stopping the Services
+To stop the running services:
 
-## Building
 
-To create a production version of your app:
+## Project Structure
 
-```bash
-npm run build
-```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## License
+This project is licensed under the MIT License.

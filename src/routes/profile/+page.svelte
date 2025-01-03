@@ -3,6 +3,18 @@
   import gear from '$lib/assets/profile/gear.png'
   import noMeat from '$lib/assets/profile/noMeat.png'
   import co2Cloud from '$lib/assets/about/co2Cloud.png'
+
+  import Modal from '$lib/components/modal.svelte'
+  let showModal = false;
+
+  const openModal = () => {
+    showModal = true; 
+  };
+
+  const closeModal = () => {
+    showModal = false; 
+  };
+
 </script>
 
 <div class="container w-full mx-auto">
@@ -35,10 +47,13 @@
         <p class="font-bold text-white">... Completed goals</p>
       </div>
 
-      <button class="text-[#94af6f] w-52 relative left-[80%] border-[#94af6f] border-2 rounded-xl flex items-center m-2 mt-4">
+      <button class="text-[#94af6f] w-52 relative left-[80%] border-[#94af6f] border-2 rounded-xl flex items-center m-2 mt-4" on:click={openModal}>
         <img src={gear} alt="settings">
         <p class="font-bold">Account settings</p>
       </button>
     </section>
+    <Modal bind:showModal={showModal} on:close={closeModal}> 
+      <p>This is a modal content!</p> 
+    </Modal>
   </div>
 </div>

@@ -27,6 +27,13 @@
       <div class="bg-[#BDD4FA] absolute w-32 p-2 pt-8 text-center rounded-xl h-20 left-[35%]">
         <p class="font-bold text-white">vegetarian</p>
       </div>
+  
+      <div class="bg-[#BDD4FA] absolute flex items-center w-32 p-2 pl-4 rounded-xl h-20 left-[44%]">
+        <p class="font-bold text-white">... CO2 saved</p>
+      </div>
+      <div class="bg-[#BDD4FA] absolute flex items-center w-32 p-2 pl-4 rounded-xl h-20 left-[53%]">
+        <p class="font-bold text-white">... Completed goals</p>
+      </div>
 
       <button class="text-[#94af6f] w-52 relative left-[80%] border-[#94af6f] border-2 rounded-xl flex items-center m-2 mt-4">
         <img src={gear} alt="settings">

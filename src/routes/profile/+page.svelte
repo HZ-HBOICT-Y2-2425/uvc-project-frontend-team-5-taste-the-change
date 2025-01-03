@@ -52,8 +52,6 @@
         <p class="font-bold">Account settings</p>
       </button>
     </section>
-    <Modal bind:showModal={showModal} on:close={closeModal}> 
-      <p>This is a modal content!</p> 
-    </Modal>
+    <Modal bind:showModal={showModal} on:close={closeModal} /> 
   </div>
 </div>

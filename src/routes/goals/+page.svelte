@@ -6,7 +6,7 @@
   import { displayGoal } from "../../stores/goalstore.js";
 
   import { leafAmount } from "../../stores/leafStore.js";
-  import { countdown, resetCountdown } from "../../stores/countdownStore.js";
+  import { countdown, resetCountdown } from "../../stores/countDownStore.js";
   import { browser } from "$app/environment";
   import InfoBox from "$lib/components/infoBox.svelte";
 

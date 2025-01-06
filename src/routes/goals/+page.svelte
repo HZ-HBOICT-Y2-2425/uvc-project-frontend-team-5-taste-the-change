@@ -4,12 +4,10 @@
   import { onMount } from "svelte";
   import { pickedGoal } from "../../stores/pickedGoalStore.js"; // Import the picked goal store
   import { displayGoal } from "../../stores/goalstore.js";
-
-  import { leafAmount } from "../../stores/leafStore.js";
   import { countdown, resetCountdown } from "../../stores/countdownStore.js";
   import { browser } from "$app/environment";
+  import { incrementLeafAmount, leafAmount } from "../../stores/leafStore.js";
   import InfoBox from "$lib/components/infoBox.svelte";
-
   import badge from '$lib/assets/goals/badge.png'
   import wallpaper from '$lib/assets/goals/wallpaper.png'
   import leaderboard from '$lib/assets/goals/leaderboard.png'
@@ -105,7 +103,6 @@
   // Handle button click
   function handleClick(goalId) {
     pickGoal(goalId);
-    increment();
   }
 </script>
 
@@ -157,8 +154,6 @@
   </div>
 </div>
 </div>
-
-  <p class="mt-6 text-gray-800">Leaves Collected: <span class="font-bold">{$leafAmount}</span></p>
   
   <!-- How to Use Your Leaves Section -->
   <div class="max-w-7xl container mx-auto p-6">
@@ -201,4 +196,7 @@
       </div>
     </div>
   </div>
+
+<p>Current Leaf Amount: {$leafAmount}</p>
+<button on:click={() => incrementLeafAmount(5)}>Add 5 Leaves</button>
 

@@ -5,10 +5,8 @@
     import bunny from "$lib/assets/Bunny.png";
     import ClothesHanger from "$lib/assets/Hanger.png";
     import RabbitName from "$lib/components/rabbitName.svelte";
-
-    import { leafAmount } from "../stores/leafStore";
     import { displayGoal } from "../stores/goalstore";
-
+    import { leafAmount, incrementLeafAmount } from "../stores/leafStore";
     import ClothingBox from "$lib/components/clothingBox.svelte";
     import Articles from "$lib/components/articles.svelte";
 
@@ -17,6 +15,8 @@
     function goToAbout() {
       goto('/about');
     }
+
+    console.log({$leafAmount})
 
     export let data;
 
@@ -107,10 +107,7 @@
     </div>
 </section>
 
-<section>
-    <button on:click={increment}>click</button>
-    <p>{$leafAmount}</p>
-</section>
+<p>Current Leaf Amount: {$leafAmount}</p>
 
 <!-- Articles Section at the Bottom -->
 <section class="w-full bg-white p-8">

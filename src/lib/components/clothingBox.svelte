@@ -1,6 +1,8 @@
 <script lang="ts">
     import { writable } from "svelte/store";
     import { createEventDispatcher } from "svelte";
+    import { leafAmount,incrementLeafAmount } from "../../stores/leafStore";
+    import { items } from "../../stores/itemStore";
 
     // Define the type for an item
     type Item = {
@@ -8,56 +10,39 @@
         name: string;
         imgUrl: string;
         bunnyURL: string;
+        leafAmountUnlock: number;
+        leafAmountCheck: number;
+        unlocked: boolean;
+        equipped: boolean;
     };
-
-    // Item data
-    const items = writable<Item[]>([
-        {
-            id: 1,
-            name: "None",
-            imgUrl: "src/lib/assets/items/default.png",
-            bunnyURL: "src/lib/assets/bunny.png",
-        },
-        {
-            id: 2,
-            name: "Tophat",
-            imgUrl: "src/lib/assets/items/tophat.png",
-            bunnyURL: "src/lib/assets/bunny-items/bunny-tophat.png",
-        },
-        {
-            id: 3,
-            name: "Crown",
-            imgUrl: "src/lib/assets/items/crown.png",
-            bunnyURL: "src/lib/assets/bunny-items/bunny-crown.png",
-        },
-        {
-            id: 4,
-            name: "Bow",
-            imgUrl: "src/lib/assets/items/bow.png",
-            bunnyURL: "src/lib/assets/bunny-items/bunny-bow.png",
-        },
-        {
-            id: 5,
-            name: "Flower",
-            imgUrl: "src/lib/assets/items/flower.png",
-            bunnyURL: "src/lib/assets/bunny-items/bunny-flower.png",
-        },
-        {
-            id: 6,
-            name: "Carrot",
-            imgUrl: "src/lib/assets/items/carrot.png",
-            bunnyURL: "src/lib/assets/bunny-items/bunny-carrot.png",
-        },
-    ]);
 
     const dispatch = createEventDispatcher();
 
     let showItemBox = true; // Define the variable to control visibility of the item box
 
     // Explicitly type the parameter as `Item`
-    function selectItem(item: Item) {
-        dispatch("itemSelected", item); // Notify parent
+    function selectItem(item: Item, unlockAmount: number, checkAmount: number) {
+    const index = $items.findIndex((i: { id: number; }) => i.id === item.id); // Find the item's index in the store
+
+    if ($leafAmount <= checkAmount) {
+        console.log('Not enough leaves');
+        return;
     }
+
+    if (!$items[index].unlocked) {
+        // Unlock the item
+        incrementLeafAmount(unlockAmount); // Subtract leaves only once
+        $items[index].unlocked = true;
+    }
+
+    // Equip the item
+    $items.forEach((i: { equipped: boolean; }) => (i.equipped = false)); // Unequip all items
+    $items[index].equipped = true; // Equip the selected item
+    items.set([...$items]); // Trigger reactivity
+    console.log(`${item.name} is now equipped`);
+}
+
+
 
     // Function to close the item box
     function closeItemBox() {
@@ -82,7 +67,7 @@
             {#each $items as item (item.id)}
                 <button
                     class="p-4 bg-white rounded shadow text-center cursor-pointer"
-                    on:click={() => selectItem(item)}
+                    on:click={() => selectItem(item, item.leafAmountUnlock, item.leafAmountCheck)}
                 >
                     <img
                         src={item.imgUrl}
@@ -90,6 +75,9 @@
                         class="w-16 h-16 mx-auto mb-2"
                     />
                     <p class="text-sm">{item.name}</p>
+                    {#if item.equipped}
+                        <p class="text-xs text-green-500">Equipped</p>
+                    {/if}
                 </button>
             {/each}
         </div>

@@ -1,6 +1,12 @@
 <script>
 	import '../app.css';
 	import logo from '$lib/assets/logo.png';
+	import { fetchLeafAmount } from '../stores/leafStore';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+    fetchLeafAmount(); // Fetch the leaf amount when the app loads
+  });
 </script>
 
 <div class="flex flex-col h-screen">

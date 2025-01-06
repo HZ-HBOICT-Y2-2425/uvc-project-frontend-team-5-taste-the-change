@@ -1,10 +1,8 @@
 <script>
   import { onMount } from 'svelte';
-  import { leafAmount, fetchLeafAmount, incrementLeafAmount } from '../../../stores/leafStore';
+  import { leafAmount, fetchLeafAmount, incrementLeafAmount } from '../../stores/leafStore';
 
-  onMount(() => {
-    fetchLeafAmount(); // Fetch the initial value when the page loads
-  });</script>
+ </script>
 
 <div class="max-w-7xl mx-auto px-18 py-8">
     <div class="flex items-center justify-between mb-6">
@@ -61,6 +59,3 @@
         </div>
     </div>
 </div>
-
-
-<p> {$leafAmount}</p>

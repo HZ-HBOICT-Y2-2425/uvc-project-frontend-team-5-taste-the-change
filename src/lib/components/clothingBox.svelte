@@ -22,7 +22,7 @@
     function selectItem(item: Item, unlockAmount: number, checkAmount: number) {
         const index = $items.findIndex((i: { id: number; }) => i.id === item.id);
 
-        if ($leafAmount <= checkAmount) {
+        if ($leafAmount < checkAmount) {
             if(!$items[index].unlocked) {
                 let errorMessage = document.getElementById('buyable')!
                 errorMessage.innerHTML = "not enough leaves"

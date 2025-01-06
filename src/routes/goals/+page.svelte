@@ -7,6 +7,7 @@
   export let data;
 
   let goalPicked = false; // Track if a goal has been picked
+  let selectedGoalId = null; // Track the selected goal ID
 
   async function pickGoal(id, index) {
     if (goalPicked) return; // Prevent picking another goal if one is already picked
@@ -15,17 +16,27 @@
       const response = await fetch("/goals", {
         method: "POST",
         body: JSON.stringify({ id }),
+        headers: { "Content-Type": "application/json" },
       });
 
       const result = await response.json();
       if (response.ok) {
         data.data.goals[index].picked = true;
         goalPicked = true; // Mark that a goal has been picked
+        selectedGoalId = id; // Save the selected goal ID
         displayGoal.set(data.data.goals.find((goal) => goal.id === id));
-        console.log(displayGoal);
+        console.log("Selected Goal ID:", selectedGoalId);
       }
     } catch (error) {
-      console.log("error");
+      console.error("Error picking goal:", error);
+    }
+  }
+
+  function navigateToProgress() {
+    if (selectedGoalId) {
+      window.location.href = `/goals/progress/${selectedGoalId}`; 
+    } else {
+      alert("Please pick a goal first.");
     }
   }
 </script>
@@ -34,7 +45,7 @@
   <div class="mb-8">
     <h2 class="text-2xl font-bold mb-4">Choose Your Weekly Goals</h2>
     {#if goalPicked}
-      <h2>your chosen goal is: {$displayGoal.goal}</h2>
+      <h2>Your chosen goal is: {$displayGoal.goal}</h2>
     {/if}
     <div class="flex space-x-8 items-center">
       <div class="flex-grow">
@@ -75,7 +86,7 @@
     </div>
 
     <button
-      on:click={() => (window.location.href = "/goals/progress")}
+      on:click={navigateToProgress}
       class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full"
     >
       View My Progress

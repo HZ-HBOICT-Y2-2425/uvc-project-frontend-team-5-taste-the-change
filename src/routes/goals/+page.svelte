@@ -150,7 +150,7 @@
         class="w-1/3 h-full rounded-lg"
       />
 
-      <a href="/progress" class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600">
+      <a href="/progress" class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 text-center">
         View My Progress
       </a>
     </div>

@@ -11,7 +11,6 @@
   import badge from "$lib/assets/goals/badge.png";
   import wallpaper from "$lib/assets/goals/wallpaper.png";
   import leaderboard from "$lib/assets/goals/leaderboard.png";
-
   import { goto } from "$app/navigation";
 
   function goToHome() {

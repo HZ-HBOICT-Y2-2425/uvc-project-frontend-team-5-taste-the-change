@@ -1,5 +1,13 @@
 <script>
   import { goto } from '$app/navigation';
+
+  function goToLogin() {
+    goto('/landing/login');
+  }
+
+  function goToSignup() {
+    goto('/landing/signup');
+  }
 </script>
 
 <div class="container w-full mx-auto">
@@ -18,10 +26,10 @@
           Welcome to our website! Here you can find out about your CO2 food- footprint, track your diet, find new recipes and contribute to 
           a greener planet. Have fun exploring our different recipes! Lets get started
         </p>
-        <button class="w-30 h-16 px-6 py-3 bg-white rounded-xl shadow border justify-center items-center gap-4 inline-flex ml-3 mt-5">
+        <button on:click={goToSignup} class="w-30 h-16 px-6 py-3 bg-white rounded-xl shadow border justify-center items-center gap-4 inline-flex ml-3 mt-5">
           <p class="w-28 h-8 text-center text-[#2d2d2d] text-2xl">Sign-up</p>
         </button>
-        <button class="w-30 h-16 px-6 py-3 bg-[#d9fdca] rounded-xl shadow border justify-center items-center gap-4 inline-flex ml-3 mt-5">
+        <button on:click={goToLogin} class="w-30 h-16 px-6 py-3 bg-[#d9fdca] rounded-xl shadow border justify-center items-center gap-4 inline-flex ml-3 mt-5">
           <p class="w-28 h-8 text-center text-[#2d2d2d] text-2xl">Login</p>
         </button>
       </section>

@@ -42,7 +42,7 @@
 		<slot />
 	</main>
 
-	<footer class="bg-light-green">
-		<p class="p-2 text-center">V2.0</p>
+	<footer class="bg-gradient-to-r from-[#96DF77] via-[#D9FDCA] to-[#BDD4FA]">
+		<p class="p-2 text-center">2025 | Taste the Change - V2.0</p>
 	</footer>
 </div>

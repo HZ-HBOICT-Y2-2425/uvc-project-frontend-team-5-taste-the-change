@@ -33,6 +33,7 @@
         // Unlock the item
         incrementLeafAmount(unlockAmount); // Subtract leaves only once
         $items[index].unlocked = true;
+        dispatch("itemSelected", item); // Notify parent
     }
 
     // Equip the item

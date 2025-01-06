@@ -23,6 +23,7 @@
     // Explicitly type the parameter as `Item`
     function selectItem(item: Item, unlockAmount: number, checkAmount: number) {
     const index = $items.findIndex((i: { id: number; }) => i.id === item.id); // Find the item's index in the store
+    let currentBunnySrc = "src/lib/assets/bunny.png"
 
     if ($leafAmount <= checkAmount) {
         console.log('Not enough leaves');
@@ -33,14 +34,13 @@
         // Unlock the item
         incrementLeafAmount(unlockAmount); // Subtract leaves only once
         $items[index].unlocked = true;
-        dispatch("itemSelected", item); // Notify parent
     }
 
     // Equip the item
     $items.forEach((i: { equipped: boolean; }) => (i.equipped = false)); // Unequip all items
     $items[index].equipped = true; // Equip the selected item
     items.set([...$items]); // Trigger reactivity
-    console.log(`${item.name} is now equipped`);
+    currentBunnySrc = $items[index].bunnyURL
 }
 
 

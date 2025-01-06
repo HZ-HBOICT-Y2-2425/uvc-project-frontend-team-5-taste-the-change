@@ -31,7 +31,7 @@
   let showClothingBox = false;
   let selectedItem: Item | null = null;
 
-  let bunnyImageURL = "src/lib/assets/bunny.png";
+  let bunnyImageURL = "src/lib/assets/Bunny.png";
 
   // Event handler for item selection
   function handleItemSelected(event: CustomEvent<Item>) {

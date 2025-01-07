@@ -33,11 +33,8 @@
   }
 
   function navigateToProgress() {
-    if (selectedGoalId) {
       window.location.href = `/goals/progress/${selectedGoalId}`; 
-    } else {
-      alert("Please pick a goal first.");
-    }
+   
   }
 </script>
 
@@ -89,7 +86,7 @@
       on:click={navigateToProgress}
       class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full"
     >
-      View My Progress
+      Collect my leaves
     </button>
   </div>
 </div>

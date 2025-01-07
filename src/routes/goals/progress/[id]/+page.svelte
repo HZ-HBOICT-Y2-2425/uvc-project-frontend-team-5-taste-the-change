@@ -1,7 +1,19 @@
 <script>
   export let data; // Provided by the server-side loader
-
   let { goalId, goalMessages, goalHistory, error } = data;
+
+  // Function to handle collecting a goal
+  function handleCollect(id) {
+    // Add the collected goal to the goalHistory list
+    const collectedGoal = goalHistory.find((goal) => goal.id === id) || { id: goalId, goal: 'Selected Goal', description: 'Description of the selected goal' };
+    
+    if (!goalHistory.some((goal) => goal.id === id)) {
+      goalHistory = [...goalHistory, collectedGoal]; // Add the collected goal
+    }
+
+    // Mark the goal as collected
+    collectedGoal.collected = true;
+  }
 </script>
 
 <!-- Background Effects -->
@@ -19,54 +31,53 @@
     <a href="/goals" class="text-gray-500 hover:underline">&larr; Back to Goals</a>
   </div>
 
-{#if goalMessages && goalMessages.length > 0}
+  <!-- Progress Section -->
+  {#if goalMessages && goalMessages.length > 0}
+    <h2 class="text-2xl font-bold mb-4">In Progress</h2>
+    <p class="text-lg text-gray-700 mb-4">
+      For this week you have selected this goal: {goalId}
+    </p>
 
-<h2 class="text-2xl font-bold mb-4">Progress</h2>
-  <p class="text-lg text-gray-700 mb-4">
-    For this week you have selected this goal: {goalId}
-  </p>
- 
-    
-        <button
-          class="bg-white border border-green-500 text-green-500 px-4 py-1 rounded-full hover:bg-green-500 hover:text-white transition duration-300"
-        >
-          Collect
-        </button>
+    <!-- Collect Button in Progress Section -->
+    <button
+      class="bg-white border border-green-500 text-green-500 px-4 py-1 rounded-full hover:bg-green-500 hover:text-white transition duration-300"
+      on:click={() => handleCollect(goalId)}
+      disabled={goalHistory.some((goal) => goal.id === goalId)}
+    >
+      {goalHistory.some((goal) => goal.id === goalId) ? 'Collected' : 'Collect'}
+    </button>
 
-
-
-  <!-- Messages Section -->
-  <div class="mt-12 mb-12">
-    {#if error}
-      <p class="error">Error: {error}</p>
-    {:else}
-      <div class="flex flex-col space-y-6 w-1/2 mx-auto">
-        {#each goalMessages as message, index}
-          {#if index % 2 === 0}
-            <div class="flex items-center">
-              <img src="/src/lib/assets/green-logo.png" class="w-20 h-20" />
-              <div class="border border-green-500 rounded-lg p-4 text-green-500 bg-white ml-3">
-                <span>{message}</span>
+    <!-- Messages Section -->
+    <div class="mt-12 mb-12">
+      {#if error}
+        <p class="error">Error: {error}</p>
+      {:else}
+        <div class="flex flex-col space-y-6 w-1/2 mx-auto">
+          {#each goalMessages as message, index}
+            {#if index % 2 === 0}
+              <div class="flex items-center">
+                <img src="/src/lib/assets/green-logo.png" class="w-20 h-20" />
+                <div class="border border-green-500 rounded-lg p-4 text-green-500 bg-white ml-3">
+                  <span>{message}</span>
+                </div>
               </div>
-            </div>
-          {:else}
-            <div class="flex items-center justify-end">
-              <div class="border border-green-500 rounded-lg p-4 text-green-500 bg-white mr-3">
-                <span>{message}</span>
+            {:else}
+              <div class="flex items-center justify-end">
+                <div class="border border-green-500 rounded-lg p-4 text-green-500 bg-white mr-3">
+                  <span>{message}</span>
+                </div>
+                <img src="/src/lib/assets/green-logo.png" class="w-20 h-20" />
               </div>
-              <img src="/src/lib/assets/green-logo.png" class="w-20 h-20" />
-            </div>
-          {/if}
-        {/each}
-      </div>
-    {/if}
-  </div>
-{:else}
-  <p class="text-lg text-gray-700 mb-4">
-    You can select a new goal for this week.
-  </p>
-{/if}
-
+            {/if}
+          {/each}
+        </div>
+      {/if}
+    </div>
+  {:else}
+    <p class="text-lg text-gray-700 mb-4">
+      You can select a new goal for this week.
+    </p>
+  {/if}
 
   <!-- Goals History Section -->
   <div class="pt-12">
@@ -83,7 +94,13 @@
                 <h3 class="text-green-400 font-bold">{goal.goal}</h3>
                 <p class="text-gray-600">{goal.description}</p>
               </div>
-              <p class="text-sm text-gray-500">Picked on: {new Date(goal.last_picked).toLocaleString()}</p>
+              <!-- Button in History Section -->
+              <button
+                class="px-4 py-2 rounded-full bg-green-500 text-white"
+                disabled
+              >
+                Collected
+              </button>
             </div>
           {/each}
         </div>

@@ -20,12 +20,11 @@
 
 		<div class="flex items-center w-full justify-end">
       <!-- First List: Routes -->
-      <ul class="flex text-2xl space-x-6 list-none">
-        <li class="list-none"><a href="/recipes" class="text-black hover:text-gray-500">Recipes</a></li>
-        <li class="list-none"><a href="/goals" class="text-black hover:text-gray-500">Goals</a></li>
-        <li class="list-none"><a href="/statistics" class="text-black hover:text-gray-500">Statistics</a></li>
-        <li class="list-none"><a href="/leaderboard" class="text-black hover:text-gray-500">Leaderboard</a></li>
-        <li class="list-none"><a href="/profile" class="text-black hover:text-gray-500">Profile</a></li>
+      <ul class="flex items-center text-2xl space-x-6 list-none">
+        <li class="list-none"><a href="/recipes" class="text-black hover:text-green-600">Recipes</a></li>
+        <li class="list-none"><a href="/goals" class="text-black hover:text-green-600">Goals</a></li>
+        <li class="list-none"><a href="/statistics" class="text-black hover:text-green-600">Statistics</a></li>
+        <li class="list-none"><a href="/profile" class="text-black hover:text-green-600">Profile</a></li>
       </ul>
     
       <!-- Second List: Leaves Count -->

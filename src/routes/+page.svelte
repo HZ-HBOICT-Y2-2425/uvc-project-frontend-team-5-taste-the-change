@@ -40,7 +40,7 @@
   }
 </script>
 
-<section class="relative flex w-full h-[75vh]">
+<section class="relative flex w-full h-[90vh]">
   <!-- Full Background Image -->
   <div
     class="absolute inset-0 w-full h-full bg-cover bg-center z-0"
@@ -71,9 +71,9 @@
       {/if}
     </div>
 
-    <div class="flex flex-col justify-center items-center w-1/2 px-8">
+    <div class="flex flex-col justify-center items-center w-1/2 h-2/3 px-8">
       <div
-        class="relative flex flex-col p-8 items-center justify-center bg-dark-green rounded-3xl shadow-lg"
+        class="relative top-[5%] flex flex-col p-8 items-center justify-center bg-dark-green rounded-3xl shadow-lg"
       >
         <img
           src={bunnyImageURL}
@@ -88,7 +88,7 @@
         </button>
       </div>
 
-      <div class="mt-6">
+      <div class="mt-6 relative top-[25%] left-[35%]">
         <RabbitName />
       </div>
     </div>

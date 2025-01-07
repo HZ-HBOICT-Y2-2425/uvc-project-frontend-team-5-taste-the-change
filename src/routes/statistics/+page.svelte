@@ -1,12 +1,15 @@
 <script>
-  import placeholderGraph from '$lib/assets/placeholderGraph.png'
+  import Chart from 'chart.js/auto';
+  import annotationPlugin from 'chartjs-plugin-annotation';
+  import Graph from '$lib/components/graph.svelte';
 </script>
 
 <div>
   <h2 class="text-5xl text-center m-3 mt-7">Statistics</h2>
   <div class="grid grid-cols-3">
     <section class="col-span-2 m-3 p-3">
-      <img src={placeholderGraph} alt="placeholder graph" class="m-3 items-center relative top-20 scale-110">
+      <Graph />
+      <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
     </section>
     <section class="col-span-1 flex flex-col space-y-6 w-5/6 h-fit rounded-lg shadow-lg bg-gradient-to-br from-green-200 via-blue-100 to-blue-200 p-3">
       <h3 class="text-2xl text-center m-3">Other statistics</h3>

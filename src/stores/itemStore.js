@@ -18,8 +18,8 @@ if (isBrowser) {
       {
         id: 1,
         name: "None",
-        imgUrl: "src/lib/assets/items/default.png",
-        bunnyURL: "src/lib/assets/bunny.png",
+        imgUrl: "src/lib/assets/items/Default.png",
+        bunnyURL: "src/lib/assets/Bunny.png",
         leafAmountUnlock: 0,
         leafAmountCheck: 0,
         unlocked: true,

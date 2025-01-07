@@ -29,7 +29,6 @@
         <li class="list-none"><a href="/recipes" class="text-black hover:text-green-600">Recipes</a></li>
         <li class="list-none"><a href="/goals" class="text-black hover:text-green-600">Goals</a></li>
         <li class="list-none"><a href="/statistics" class="text-black hover:text-green-600">Statistics</a></li>
-        <li class="list-none"><a href="/profile" class="text-black hover:text-green-600">Profile</a></li>
 		<li>
 			<a href="/profile">
 				<img src={profileicon} alt="profile icon" />

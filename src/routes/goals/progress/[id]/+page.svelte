@@ -45,28 +45,24 @@ console.log('Selected Goal ID:', goalId);
   </div>
 
   <!-- In Progress Section -->
-  {#if pickedGoal}
-    <h2 class="text-2xl text-gray-850 font-bold mb-4">In Progress</h2>
-    <p class="text-lg text-gray-850 mb-4">
-      For this week you have selected this goal: {pickedGoal.goal}
-    </p>
-    <p class="text-gray-700">{pickedGoal.description}</p>
-    <div class="goal-item pt-6">
-
+ {#if pickedGoal}
+  <h2 class="text-2xl text-gray-850 font-bold mb-4">In Progress</h2>
+  <p class="text-lg text-gray-850 mb-4">
+    For this week you have selected this goal: {pickedGoal.goal}
+  </p>
+  <p class="text-gray-700">{pickedGoal.description}</p>
+  <div class="goal-item pt-6">
     <button
       class="{pickedGoal.status === 'collected' 
               ? 'bg-green-500 text-white' 
               : 'bg-white border border-green-500 hover:bg-green-600 text-green-500'} 
-            px-4 py-2 rounded-full  hover:text-white transition duration-300"
+            px-4 py-2 rounded-full hover:text-white transition duration-300"
       on:click={() => handleCollect(pickedGoal.id)}
       disabled={pickedGoal.status === 'collected'}
     >
       {pickedGoal.status === 'collected' ? 'Collected' : 'Collect'}
     </button>
-    </div>
-  {:else}
-    <p class="text-lg text-gray-700">You can select a new goal for this week.</p>
-  {/if}
+  </div>
 
   <!-- Messages Section -->
   <div class="mt-12 mb-12">
@@ -96,6 +92,10 @@ console.log('Selected Goal ID:', goalId);
       <p class="text-lg text-gray-700">No messages found for this goal.</p>
     {/if}
   </div>
+{:else}
+  <p class="text-lg text-gray-700">You can select a new goal for this week.</p>
+{/if}
+
 
   <!-- Goals History Section -->
   <div class="pt-12">

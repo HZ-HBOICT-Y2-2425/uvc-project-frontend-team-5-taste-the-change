@@ -1,10 +1,14 @@
 /**
  *  @param {{ params: { id: string } }} context 
-*/
+ */
 export async function load({ fetch, params }) {
   const { id } = params;
 
   try {
+    // Fetch picked goal
+    const pickedResponse = await fetch(`http://localhost:3013/goals/${id}/picked`);
+    const pickedGoal = pickedResponse.ok ? await pickedResponse.json() : null;
+
     // Fetch goal messages
     const messagesResponse = await fetch(`http://localhost:3013/goals/${id}/messages`);
     const messages = messagesResponse.ok ? await messagesResponse.json() : { messages: [] };
@@ -15,12 +19,14 @@ export async function load({ fetch, params }) {
 
     return {
       goalId: id,
+      pickedGoal,
       goalMessages: messages.messages || [],
       goalHistory: history,
     };
   } catch (error) {
     return {
       goalId: id,
+      pickedGoal: null,
       goalMessages: [],
       goalHistory: [],
       error: error.message,

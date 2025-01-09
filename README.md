@@ -1,7 +1,7 @@
 # Frontend Sveltekit Project
 
 ## Overview
-This project, Taste the Change, consists of a frontend built with SvelteKit & TailwindCSS. 
+This project, Taste the Change, consists of a frontend built with SvelteKit & TailwindCSS.
 
 ## Architecture
 The project is structured as follows:
@@ -15,11 +15,12 @@ The project is structured as follows:
 * **static** contains static elements for the application such as the favicon. 
 
 ## Features
-1. **Recipes:**
-    * You can choose/find recipes to cook for six different diet goals such as vegetarian and vegan recipes. You can also use filters to easier find what you are looking for.
-2. **Goals:** 
-    * Each week, you can select one goal to work on. Once completed you will be able to claim leaves, which are the currency of our application.
-3. **Leaves** 
+1. **About our app** On the about page you can get more information on our application. 
+2. **Recipes:** You can choose/find recipes to cook for six different diet goals such as vegetarian and vegan recipes. You can also use filters to easier find what you are looking for.
+3. **Goals:** Each week, you can select one goal to work on. Once completed you will be able to claim leaves, which are the currency of our application.
+4. **Leaves:** For each goal that you complete, you can earn a certain amount of leaves, which you can use to buy accessories for your personal rabbit. 
+5. **Personal rabbit:** You get a personal rabbit that you can name & personalize with accessories unlocked with leaves. You can find the rabbit on your homepage. 
+6. **Articles:** On the homepage there is a section with articles available. You can choose and open these to read more about co2 related topics.
 
 ## Technologies Used
 * **Node.js & npm** for package management.

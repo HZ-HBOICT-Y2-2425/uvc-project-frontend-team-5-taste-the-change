@@ -19,10 +19,7 @@
   console.log({ $leafAmount });
 
   export let data;
-  export let userdata;
-
-  console.log('User data at start:', userdata); // Log userdata at the start of the script
-
+  
   let totalCO2 = 0;
 
   // Define the type for an item
@@ -44,21 +41,10 @@
     showClothingBox = false;
   }
 
-  // This function calculates the total CO2 emissions from the userdata
-  function getUserEmissions() {
-    totalCO2 = 0; // Reset before summing
-
-    console.log('Checking userdata:', userdata);
-
-      // Sum emissions from all users (userdata is directly an array of users)
-      userdata.userdata.forEach(user => {
-        totalCO2 += user.totalemissions;
-      });
-    }
-    console.log(`Total CO2 emissions: ${totalCO2}`);
-
-  // Use reactive statement to call getUserEmissions when userdata changes
-  $:getUserEmissions();
+  // Sum emissions from all users (userdata is directly an array of users)
+  data.data.forEach(user => {
+    totalCO2 += user.totalemissions;
+  });
 </script>
 
 <section class="relative flex w-full h-[90vh]">

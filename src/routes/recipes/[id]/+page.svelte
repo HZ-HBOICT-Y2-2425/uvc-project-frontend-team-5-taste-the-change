@@ -34,6 +34,7 @@
       <button
         class="bg-[#76a4e9] rounded-3xl justify-center items-center gap-2.5 inline-flex p-3 m-3"
         on:click={goToRecipes}
+        type="button"
       >
         <p class="text-white text-lg font-bold uppercase leading-tight">
           Back to Recipes

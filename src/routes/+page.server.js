@@ -6,13 +6,13 @@ export async function load() {
       throw new Error('Failed to fetch users');
     }
 
-    const userdata = await response.json();
-    console.log('Fetched userdata:', userdata); // Verify userdata here
-    return { userdata };  // Return userdata directly
+    const data = await response.json();
+    console.log('Fetched userdata:', data); // Verify userdata here
+    return { data };  // Return userdata directly
   } catch (error) {
     console.error('Error fetching users:', error);
     return {
-      userdata: {error: error.message}  // Return an empty array in case of an error
+      data: {error: error.message}  // Return an empty array in case of an error
     };
   }
 }

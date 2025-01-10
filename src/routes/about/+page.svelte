@@ -64,12 +64,6 @@
             <div class="text-[#3f3f3f] text-lg font-bold leading-relaxed">Healthy food</div>
           </div>
         </div>
-        <div class="px-6 py-3 bg-white rounded-md h-18 max-w-64 shadow justify-center items-center gap-4 flex relative top-96 z-10">
-          <img class="h-8 w-8" src={person} alt="Plant icon" />
-          <div class="flex-col justify-start items-start gap-0.5 inline-flex">
-            <div class="text-[#3f3f3f] text-lg font-bold leading-relaxed">Share with friends</div>
-          </div>
-        </div>
         <div class="px-6 py-3 bg-white rounded-md h-18 max-w-56 shadow justify-end items-center gap-4 flex relative top-56 z-10 left-3/4">
           <img class="h-8 w-8" src={earth} alt="Plant icon" />
           <div class="flex-col justify-start items-start gap-0.5 inline-flex">

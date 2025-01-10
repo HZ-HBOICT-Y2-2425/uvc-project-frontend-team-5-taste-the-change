@@ -21,4 +21,3 @@ export async function fetchLeafAmount() {
     console.error('Error fetching leaf amount:', error);
   }
 }
-

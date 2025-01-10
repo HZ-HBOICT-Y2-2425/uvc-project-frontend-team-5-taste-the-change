@@ -6,7 +6,7 @@
   import { displayGoal } from "../../stores/goalstore.js";
   import { countdown, resetCountdown } from "../../stores/countDownStore.js";
   import { browser } from "$app/environment";
-  import { fetchLeafAmount, incrementLeafAmount} from "../../stores/leafStore.js";
+  import { incrementLeafAmount, leafAmount } from "../../stores/leafStore.js";
   import InfoBox from "$lib/components/infoBox.svelte";
   import badge from "$lib/assets/goals/badge.png";
   import wallpaper from "$lib/assets/goals/wallpaper.png";

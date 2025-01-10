@@ -1,5 +1,5 @@
 <script>
-  import logo from '$lib/assets/logo.png';
+  import rabbit from '$lib/assets/rabbit-about-page.png';
   import healthyFood from '$lib/assets/about/healthyFood.png'
   import earth from '$lib/assets/about/earth.png'
   import person from '$lib/assets/about/person.png'
@@ -77,7 +77,7 @@
           </div>
         </div>
         <div class="bg-[#aaf884] rounded-xl relative left-20 w-3/4 h-auto flex justify-center items-center p-5 z-0">
-          <img src={logo} alt="Logo"/>
+          <img src={rabbit} alt="Rabbit" class="w-80 h-80 object-contain"/>
         </div>
       </div>
     </section>

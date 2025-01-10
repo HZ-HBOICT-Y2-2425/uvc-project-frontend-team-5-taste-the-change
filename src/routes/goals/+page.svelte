@@ -160,7 +160,7 @@
 <div class="max-w-7xl container mx-auto p-6">
   <div class="mb-8">
     <h2 class="text-2xl font-bold mb-4">How to Use Your Leaves?</h2>
-    <div class="flex space-x-4">
+    <div class="flex justify-center space-x-4">
       <InfoBox>
         <img
           slot="image"
@@ -186,21 +186,6 @@
           Customize your mascot with fun accessories and decorations.
         </div>
         <button slot="button" on:click={goToHome}>Learn More</button>
-      </InfoBox>
-      <InfoBox>
-        <img
-          slot="image"
-          src={leaderboard}
-          alt="leaderboard"
-          class="w-40 h-auto mx-auto mb-2"
-        />
-        <div slot="title" class="text-xl font-bold m-2">
-          Compete with other users
-        </div>
-        <div slot="description">
-          Climb the leaderboard and show off your progress
-        </div>
-        <button slot="button" on:click={goToLeaderboard}>Learn More</button>
       </InfoBox>
     </div>
   </div>

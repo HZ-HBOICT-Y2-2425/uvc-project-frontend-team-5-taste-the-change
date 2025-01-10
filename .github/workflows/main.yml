@@ -1,4 +1,4 @@
-name: Deploy SvelteKit App
+name: Taste the Change
 
 on:
   push:

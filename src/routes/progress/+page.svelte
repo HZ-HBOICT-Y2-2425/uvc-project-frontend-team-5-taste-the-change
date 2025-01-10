@@ -1,3 +1,9 @@
+<script>
+  import { onMount } from 'svelte';
+  import { leafAmount, fetchLeafAmount, incrementLeafAmount } from '../../stores/leafStore';
+
+ </script>
+
 <div class="max-w-7xl mx-auto px-18 py-8">
     <div class="flex items-center justify-between mb-6">
         <a href="/goals" class="text-gray-500 hover:underline">
@@ -26,7 +32,7 @@
                 <img src="/src/lib/assets/result (1) 6.png" alt="Leaf Icon" class="w-8 h-auto" />
                 <span class="text-green-500 ml-2">10</span>
             </div>
-            <button class="bg-white border border-green-500 text-green-500 px-4 py-1 rounded-full hover:bg-green-500 hover:text-white">
+            <button class="bg-white border border-green-500 text-green-500 px-4 py-1 rounded-full hover:bg-green-500 hover:text-white" on:click={() => incrementLeafAmount(10)}>
                 Collect
             </button>
         </div>

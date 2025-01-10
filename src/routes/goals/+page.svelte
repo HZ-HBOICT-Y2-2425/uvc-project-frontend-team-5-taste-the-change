@@ -159,7 +159,7 @@
 <!-- How to Use Your Leaves Section -->
 <div class="max-w-7xl container mx-auto p-6">
   <div class="mb-8">
-    <h2 class="text-2xl font-bold mb-4">How to Use Your Leaves?</h2>
+    <h2 class="text-2xl font-bold mb-4 flex justify-center">How to Use Your Leaves?</h2>
     <div class="flex justify-center space-x-4">
       <InfoBox>
         <img

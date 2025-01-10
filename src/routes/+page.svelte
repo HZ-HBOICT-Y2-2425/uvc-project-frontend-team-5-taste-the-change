@@ -19,6 +19,8 @@
   console.log({ $leafAmount });
 
   export let data;
+  
+  let totalCO2 = 0;
 
   // Define the type for an item
   type Item = {
@@ -38,6 +40,11 @@
     bunnyImageURL = event.detail;
     showClothingBox = false;
   }
+
+  // Sum emissions from all users (userdata is directly an array of users)
+  data.data.forEach(user => {
+    totalCO2 += user.totalemissions;
+  });
 </script>
 
 <section class="relative flex w-full h-[90vh]">
@@ -52,7 +59,7 @@
       <div
         class="text-[#aaf884] text-[96px] font-bold font-nunito leading-[115.2px]"
       >
-        33.6 kg
+        {totalCO2} Kg
       </div>
       <div
         class="text-[#fdfeff] text-[40px] font-bold font-nunito leading-[57.6px]"

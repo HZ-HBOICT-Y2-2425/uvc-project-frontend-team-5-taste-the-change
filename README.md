@@ -21,6 +21,7 @@ The project is structured as follows:
 4. **Leaves:** For each goal that you complete, you can earn a certain amount of leaves, which you can use to buy accessories for your personal rabbit. 
 5. **Personal rabbit:** You get a personal rabbit that you can name & personalize with accessories unlocked with leaves. You can find the rabbit on your homepage. 
 6. **Articles:** On the homepage there is a section with articles available. You can choose and open these to read more about co2 related topics.
+7. **Statistics** On this page you can view a graph which shows the average co2 emission by a person per month, and then if you are above or below that per month. 
 
 ## Technologies Used
 * **Node.js & npm** for package management.

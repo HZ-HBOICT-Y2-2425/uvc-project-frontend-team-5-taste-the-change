@@ -5,20 +5,17 @@
 
   export let data;
 
-  let input = ""; // Initialize variable
+  let input = "";
   let usernameExists = false;
 
   function checkAvailability(event) {
   event.preventDefault();
   
-  const userInput = document.getElementById("username").value;  // Get input value on button click
-  
-  console.log("User Input: ", userInput);  // Debugging the user input
+  const userInput = document.getElementById("username").value;
 
   let usernameExists = false;
 
   data.data.forEach((user) => {
-    console.log("Checking username: ", user.username);  // Debugging the usernames in the data
     if (user.username === userInput) {
       usernameExists = true;
     }
@@ -26,11 +23,11 @@
 
   if (usernameExists) {
     console.log(`Logging in as ${userInput}`);
-    name.set(userInput);  // Update the global name store
+    name.set(userInput);
     goto('/');
   } else {
     console.log(`Signing up as ${userInput}`);
-    name.set(userInput);  // Update the global name store
+    name.set(userInput);
     goto('/landing/diet');
   }
 }

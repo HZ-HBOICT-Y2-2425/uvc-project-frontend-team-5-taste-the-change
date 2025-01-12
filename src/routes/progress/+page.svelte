@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import { leafAmount, fetchLeafAmount, incrementLeafAmount } from '../../stores/leafStore';
+  import { leafAmount, incrementLeafAmount } from '../../stores/leafStore';
 
  </script>
 

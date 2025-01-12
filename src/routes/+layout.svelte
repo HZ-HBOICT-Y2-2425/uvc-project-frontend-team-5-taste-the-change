@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
 	import logo from '$lib/assets/rabbit-logo.png';
-	import { fetchLeafAmount, leafAmount } from '../stores/leafStore';
+	import { leafAmount } from '../stores/leafStore';
 	import { onMount } from 'svelte';
 	import profileicon from "$lib/assets/profile.png";
 	import { page } from "$app/stores"; 
@@ -9,7 +9,7 @@
 
     import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	onMount(() => {
-    fetchLeafAmount(); // Fetch the leaf amount when the app loads
+	 // Fetch the leaf amount when the app loads
   });
 </script>
 
@@ -33,7 +33,7 @@
 		</li>
 		</ul>
 		<ul class="flex items-center text-xl list-none">
-		<li class="list-none"><img src="src/lib/assets/result (1) 6.png" alt="leaf"></li>
+		<li class="list-none"><img src="src/lib/assets/result.png" alt="leaf"></li>
 		<li class="list-none">{$leafAmount}</li>
 		</ul>
 	</div>

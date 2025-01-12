@@ -1,7 +1,7 @@
 <script>
   export let data; // Provided by the server-side loader
   import { onMount } from 'svelte';
-  import { leafAmount, fetchLeafAmount, incrementLeafAmount } from '../../../../stores/leafStore';
+  import { leafAmount, incrementLeafAmount } from '../../../../stores/leafStore';
 
   let { goalId, pickedGoal, goalMessages, goalHistory, error } = data;
 

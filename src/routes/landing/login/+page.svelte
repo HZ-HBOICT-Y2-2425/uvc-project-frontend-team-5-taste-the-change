@@ -1,46 +1,42 @@
 <script>
   import { goto } from "$app/navigation";
-
-  // function goToHome() {
-  //   goto("/");
-  // }
-
-  // function goToDietGoal() {
-  //   goto("/landing/diet");
-  // }
+  import { name } from "../../../stores/nameStore.js";
+  import { onMount } from "svelte";
 
   export let data;
+
+  let input = ""; // Initialize variable
   let usernameExists = false;
 
   function checkAvailability(event) {
-    event.preventDefault();
-    //check user input against database entries
-    const userInput = document.getElementById("username").value;
-    let matches = data.data.forEach((user) => {
-      if (user.username == userInput) {
-        usernameExists = true;
-      }
-    });
+  event.preventDefault();
+  
+  const userInput = document.getElementById("username").value;  // Get input value on button click
+  
+  console.log("User Input: ", userInput);  // Debugging the user input
 
-    if (usernameExists) {
-      console.log(`logging in as ${userInput}`);
-      goto('/');
-    } else {
-      console.log(`signing up as ${userInput}`);
-      goto('/landing/diet');
+  let usernameExists = false;
+
+  data.data.forEach((user) => {
+    console.log("Checking username: ", user.username);  // Debugging the usernames in the data
+    if (user.username === userInput) {
+      usernameExists = true;
     }
+  });
+
+  if (usernameExists) {
+    console.log(`Logging in as ${userInput}`);
+    name.set(userInput);  // Update the global name store
+    goto('/');
+  } else {
+    console.log(`Signing up as ${userInput}`);
+    name.set(userInput);  // Update the global name store
+    goto('/landing/diet');
   }
+}
 
-  // function login() {
-  //   //login with information from database
-  //   goto("/");
-  // }
-
-  // function signup() {
-  //   //post name to database with statistics at 0
-  //   goto("/landing/diet");
-  // }
 </script>
+
 
 <div>
   <h2 class="font-bold text-4xl absolute left-[32%] top-[35%]">

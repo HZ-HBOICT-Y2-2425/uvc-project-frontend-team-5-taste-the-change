@@ -3,8 +3,9 @@
   import gear from '$lib/assets/profile/gear.png'
   import noMeat from '$lib/assets/profile/noMeat.png'
   import co2Cloud from '$lib/assets/about/co2Cloud.png'
-
   import Modal from '$lib/components/modal.svelte'
+  import { name } from '../../stores/nameStore'
+
   let showModal = false;
 
   const openModal = () => {
@@ -15,6 +16,8 @@
     showModal = false; 
   };
 
+  $: currentName = $name;
+
 </script>
 
 <div class="container w-full mx-auto">
@@ -23,7 +26,7 @@
       <img class="h-25 w-25 bg-pink-100 rounded-full p-4" src={profilePicture} alt="Profile" />
     </div>
     <section class="bg-gradient-to-r from-[#cbef97] to-[#6DA4FF] w-[100%] min-h-72 z-0">
-      <h2 class="font-bold text-7xl absolute left-[30%] top-[31%]">John Doe</h2>
+      <h2 class="font-bold text-7xl absolute left-[30%] top-[31%]">{currentName}</h2>
       <button class="text-[#94af6f] w-52 absolute top-[38%] left-[80%] border-[#94af6f] border-2 rounded-xl flex items-center m-2 p-2 pr-4 pl-4 z-10 bg-white">
         <p class="font-bold">Edit Cover Picture</p>
       </button>

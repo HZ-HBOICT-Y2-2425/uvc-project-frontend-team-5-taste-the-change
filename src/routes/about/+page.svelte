@@ -118,7 +118,7 @@
           class="w-40 h-auto mx-auto mb-2"
         />
         <div slot="title" class="text-xl font-bold m-2">Earn Leaves</div>
-        <div slot="description">Complete tasks, earn leaves, decorate your rabbit, and compete with friends.</div>
+        <div slot="description">Complete tasks, earn leaves and customize your rabbit.</div>
         <button slot="button" on:click={goToGoals}>Learn More</button>
       </InfoBox>
     </section>

@@ -9,6 +9,7 @@
   import { leafAmount, incrementLeafAmount } from "../stores/leafStore";
   import ClothingBox from "$lib/components/clothingBox.svelte";
   import Articles from "$lib/components/articles.svelte";
+  import { bunnyURL } from "../stores/bunnyUrlStore";
 
   import { goto } from "$app/navigation";
 
@@ -33,7 +34,7 @@
   let showClothingBox = false;
   let selectedItem: Item | null = null;
 
-  let bunnyImageURL = "src/lib/assets/Bunny.png";
+  let bunnyImageURL = $bunnyURL
 
   // Event handler for item selection
   function handleItemSelected(event: CustomEvent<Item>) {
@@ -83,7 +84,7 @@
         class="relative top-[5%] flex flex-col p-8 items-center justify-center bg-dark-green rounded-3xl shadow-lg"
       >
         <img
-          src={bunnyImageURL}
+          src={$bunnyURL}
           alt="Bunny"
           class="w-2/3 transform scale-x-[-1]"
         />

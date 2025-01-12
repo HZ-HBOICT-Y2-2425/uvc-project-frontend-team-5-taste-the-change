@@ -3,6 +3,7 @@
     import { createEventDispatcher } from "svelte";
     import { leafAmount, incrementLeafAmount } from "../../stores/leafStore";
     import { items } from "../../stores/itemStore";
+    import { bunnyURL } from "../../stores/bunnyUrlStore";
 
     type Item = {
         id: number;
@@ -39,7 +40,8 @@
         $items[index].equipped = true; // Equip the selected item
         items.set([...$items]);
 
-        dispatch('updateBunnyImage', $items[index].bunnyURL); // Send the bunny image URL to parent component
+        bunnyURL.set($items[index].bunnyURL); 
+        dispatch('updateBunnyImage', $items[index].bunnyURL);
     }
 
     function closeItemBox() {

@@ -1,9 +1,11 @@
 <script>
+    import { bunnyName } from "../../stores/bunnyNameStore";
+
     let name = "";
     let finalName = ""; 
 
     function finalRabbitName() {
-        finalName = name
+        bunnyName.set(name)
     }
 </script>
 
@@ -23,8 +25,8 @@
     Submit Name
 </button>
 <p class="mt-4 text-white text-lg font-semibold text-center">
-    {#if finalName}
-        Your chosen name is: <span class="text-green-300">{finalName}</span>
+    {#if $bunnyName}
+        Your chosen name is: <span class="text-green-300">{$bunnyName}</span>
     {/if}
 </p>
 </div>

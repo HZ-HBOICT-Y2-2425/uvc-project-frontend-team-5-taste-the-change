@@ -13,7 +13,7 @@
   import leaderboard from "$lib/assets/goals/leaderboard.png";
   import { goto } from "$app/navigation";
 
-  function goToHome() {
+  function goToHome() { 
     goto("/");
   }
 
@@ -48,51 +48,68 @@
   });
 
   // Function to pick a goal
-  async function pickGoal(id) {
-    if (goalPicked) return; // Prevent multiple picks
+ async function pickGoal(id) {
+    if (goalPicked) return;
 
     try {
-      const response = await fetch("http://localhost:3013/pick-goal/" + id, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      });
+        const response = await fetch(`http://localhost:3013/pick-goal/${id}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+        });
 
-      if (response.ok) {
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error("Error picking goal:", errorData);
+            return;
+        }
+
         const updatedGoal = await response.json();
 
-        // Update goals state
-        goals = goals.map((goal) => {
-          if (goal.id === id) {
-            goal.picked = true;
-            return { ...goal, ...updatedGoal };
-          }
-          return goal;
-        });
+        goals = goals.map((goal) =>
+            goal.id === id ? { ...goal, picked: true, status: updatedGoal.status } : goal
+        );
 
         goalPicked = true;
         pickedGoal.set(updatedGoal);
-        displayGoal.set(updatedGoal);
-        resetCountdown(); // Start/reset the countdown timer
-      } else {
-        const error = await response.json();
-        if (error.error === "You can only pick one goal per week.") {
-          alert("You can only pick one goal per week!");
-        }
-      }
+
+        localStorage.setItem("selectedGoalId", id);
+
+        resetCountdown(); 
+
     } catch (error) {
-      console.error("Error picking goal:", error);
+        console.error("Error picking goal:", error);
+        alert("An unexpected error occurred while picking the goal.");
     }
-  }
+}
+
 
   // Reset all goals when countdown timer hits zero
-  function resetGoals() {
-    goals = goals.map((goal) => ({ ...goal, picked: false }));
-    pickedGoal.set(null); // Reset picked goal
+async function resetGoals() {
+  try {
+    // Reset pickedGoal and localStorage
+    pickedGoal.set(null);
     goalPicked = false;
+
     if (browser) {
       localStorage.removeItem("pickedGoal");
     }
+
+    // Fetch new random goals from the backend
+    const response = await fetch("http://localhost:3013/random-goals"); // Adjust this to match your backend
+    if (!response.ok) {
+      throw new Error("Failed to fetch random goals");
+    }
+
+    const newGoals = await response.json();
+
+    // Update the local goals array with new random goals
+    goals = [...newGoals];
+    console.log("Goals have been reset and refreshed:", goals);
+  } catch (error) {
+    console.error("Error resetting and fetching new goals:", error);
   }
+}
+
 
   // Increment leaf count
   function increment() {
@@ -103,6 +120,13 @@
   function handleClick(goalId) {
     pickGoal(goalId);
   }
+
+  function navigateToProgress() {
+  const selectedGoalId = localStorage.getItem("selectedGoalId");
+    goto(`/goals/progress/${selectedGoalId}`);
+ 
+}
+
 </script>
 
 <div class="max-w-10xl container mx-auto p-6">
@@ -132,27 +156,32 @@
               <h3 class="text-green-400 font-bold">{goal.goal}</h3>
               <p class="text-gray-600">{goal.description}</p>
             </div>
+            <div class="pl-4">
             <button
-              class="px-4 py-2 rounded-full text-white"
-              on:click={() => handleClick(goal.id)}
-              disabled={goal.picked || $pickedGoal}
-              style="background-color: {goal.picked ? 'red' : 'green'};"
-            >
-              {goal.picked ? "Picked" : "Pick"}
-            </button>
+            class="{goal.status === 'picked' 
+                    ? 'bg-green-500 text-white' 
+                    : 'bg-white border border-green-500 hover:bg-green-600 text-green-500'} 
+                  px-4 py-2 rounded-full hover:text-white transition duration-300"
+            on:click={() => handleClick(goal.id)}
+            disabled={goal.picked || $pickedGoal}
+          >
+               {goal.status === 'picked' ? "Picked" : "Pick"}
+          </button>
+</div>
           </div>
         {/each}
       </div>
-      <img
-        src="src/lib/assets/image 33.png"
-        alt="Goals"
-        class="w-1/3 h-full rounded-lg"
-      />
-
-      <a href="/progress" class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 text-center">
-        View My Progress
-      </a>
+      <img src="src/lib/assets/image 33.png" alt="Goals" class="w-1/3 h-full rounded-lg" />
     </div>
+
+    <!-- Progress Navigation Button -->
+    <button
+      on:click={navigateToProgress}
+      class="mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full"
+    >
+      Collect Leaves
+    </button>
+  
   </div>
 </div>
 

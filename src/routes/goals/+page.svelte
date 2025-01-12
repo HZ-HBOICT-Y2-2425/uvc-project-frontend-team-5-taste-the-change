@@ -48,7 +48,7 @@
   });
 
   // Function to pick a goal
-async function pickGoal(id) {
+ async function pickGoal(id) {
     if (goalPicked) return;
 
     try {
@@ -65,9 +65,8 @@ async function pickGoal(id) {
 
         const updatedGoal = await response.json();
 
-        // Update goal statuses
         goals = goals.map((goal) =>
-            goal.id === id ? { ...goal, status: "picked" } : { ...goal, status: "not_picked" }
+            goal.id === id ? { ...goal, picked: true, status: updatedGoal.status } : goal
         );
 
         goalPicked = true;
@@ -75,7 +74,8 @@ async function pickGoal(id) {
 
         localStorage.setItem("selectedGoalId", id);
 
-        resetCountdown();
+        resetCountdown(); 
+
     } catch (error) {
         console.error("Error picking goal:", error);
         alert("An unexpected error occurred while picking the goal.");
@@ -83,16 +83,33 @@ async function pickGoal(id) {
 }
 
 
-
   // Reset all goals when countdown timer hits zero
-  function resetGoals() {
-    goals = goals.map((goal) => ({ ...goal, status: 'not_picked' }));
-    pickedGoal.set(null); // Reset picked goal
+async function resetGoals() {
+  try {
+    // Reset pickedGoal and localStorage
+    pickedGoal.set(null);
     goalPicked = false;
+
     if (browser) {
       localStorage.removeItem("pickedGoal");
     }
+
+    // Fetch new random goals from the backend
+    const response = await fetch("http://localhost:3013/random-goals"); // Adjust this to match your backend
+    if (!response.ok) {
+      throw new Error("Failed to fetch random goals");
+    }
+
+    const newGoals = await response.json();
+
+    // Update the local goals array with new random goals
+    goals = [...newGoals];
+    console.log("Goals have been reset and refreshed:", goals);
+  } catch (error) {
+    console.error("Error resetting and fetching new goals:", error);
   }
+}
+
 
   // Increment leaf count
   function increment() {

@@ -10,7 +10,6 @@
   let selectedDiet = "";
   let co2Range = "";
   let prepTime = 30;
-  let onlyFavourites = false;
 
   /**
      * @type {string | any[]}
@@ -110,19 +109,6 @@
           on:input={filterRecipes}
         />
         <p class="mt-2 text-lg">Up to: {prepTime} minutes</p>
-      </div>
-
-      <div>
-        <h3 class="text-2xl mb-2">Favourites</h3>
-        <label class="bg-white p-2 rounded-lg flex items-center space-x-2">
-          <input
-            type="checkbox"
-            bind:checked={onlyFavourites}
-            class="w-5 h-5 rounded border-gray-300"
-            on:change={filterRecipes}
-          />
-          <span class="text-lg">Favourites ❤️</span>
-        </label>
       </div>
     </aside>
 

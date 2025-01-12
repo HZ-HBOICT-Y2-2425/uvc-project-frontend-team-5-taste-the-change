@@ -1,3 +1,9 @@
+<script>
+  import { onMount } from 'svelte';
+  import { leafAmount, incrementLeafAmount } from '../../stores/leafStore';
+
+ </script>
+
 <div class="max-w-7xl mx-auto px-18 py-8">
     <div class="flex items-center justify-between mb-6">
         <a href="/goals" class="text-gray-500 hover:underline">
@@ -26,7 +32,7 @@
                 <img src="/src/lib/assets/result (1) 6.png" alt="Leaf Icon" class="w-8 h-auto" />
                 <span class="text-green-500 ml-2">10</span>
             </div>
-            <button class="bg-white border border-green-500 text-green-500 px-4 py-1 rounded-full hover:bg-green-500 hover:text-white">
+            <button class="bg-white border border-green-500 text-green-500 px-4 py-1 rounded-full hover:bg-green-500 hover:text-white" on:click={() => incrementLeafAmount(10)}>
                 Collect
             </button>
         </div>
@@ -34,7 +40,7 @@
 
     <div class="flex flex-col space-y-6 w-1/2 mx-auto">
         <div class="flex items-center">
-            <img src="/src/lib/assets/green-logo.png" class="w-20 h-20" />
+            <img src="/src/lib/assets/green-logo.png" alt="logo" class="w-20 h-20" />
             <div class="relative border border-green-500 rounded-lg p-4 text-green-500 bg-opacity-10 bg-green-100 ml-3">
                 <span>Every healthy choice you make is an investment in your future.</span>
             </div>
@@ -43,10 +49,10 @@
             <div class="relative border border-green-500 rounded-lg p-4 text-green-500 bg-opacity-10 bg-green-100 mr-3">
                 <span>Be kind to the Earth, one plate at a time.</span>
             </div>
-            <img src="/src/lib/assets/green-logo.png" class="w-20 h-20" />
+            <img src="/src/lib/assets/green-logo.png" alt="logo" class="w-20 h-20" />
         </div>
         <div class="flex items-center">
-            <img src="/src/lib/assets/green-logo.png" class="w-20 h-20" />
+            <img src="/src/lib/assets/green-logo.png" alt="logo" class="w-20 h-20" />
             <div class="relative border border-green-500 rounded-lg p-4 text-green-500 bg-opacity-10 bg-green-100 ml-3">
                 <span>Your progress can have a global impact on nature by reducing CO2.</span>
             </div>

@@ -13,7 +13,7 @@
   import leaderboard from "$lib/assets/goals/leaderboard.png";
   import { goto } from "$app/navigation";
 
-  function goToHome() {
+  function goToHome() { 
     goto("/");
   }
 
@@ -48,7 +48,7 @@
   });
 
   // Function to pick a goal
- async function pickGoal(id) {
+async function pickGoal(id) {
     if (goalPicked) return;
 
     try {
@@ -65,8 +65,9 @@
 
         const updatedGoal = await response.json();
 
+        // Update goal statuses
         goals = goals.map((goal) =>
-            goal.id === id ? { ...goal, picked: true, status: updatedGoal.status } : goal
+            goal.id === id ? { ...goal, status: "picked" } : { ...goal, status: "not_picked" }
         );
 
         goalPicked = true;
@@ -74,6 +75,7 @@
 
         localStorage.setItem("selectedGoalId", id);
 
+        resetCountdown();
     } catch (error) {
         console.error("Error picking goal:", error);
         alert("An unexpected error occurred while picking the goal.");
@@ -81,9 +83,10 @@
 }
 
 
+
   // Reset all goals when countdown timer hits zero
   function resetGoals() {
-    goals = goals.map((goal) => ({ ...goal, picked: false }));
+    goals = goals.map((goal) => ({ ...goal, status: 'not_picked' }));
     pickedGoal.set(null); // Reset picked goal
     goalPicked = false;
     if (browser) {
@@ -138,14 +141,14 @@
             </div>
             <div class="pl-4">
             <button
-            class="{goal.picked 
+            class="{goal.status === 'picked' 
                     ? 'bg-green-500 text-white' 
                     : 'bg-white border border-green-500 hover:bg-green-600 text-green-500'} 
                   px-4 py-2 rounded-full hover:text-white transition duration-300"
             on:click={() => handleClick(goal.id)}
             disabled={goal.picked || $pickedGoal}
           >
-            {goal.picked ? "Picked" : "Pick"}
+               {goal.status === 'picked' ? "Picked" : "Pick"}
           </button>
 </div>
           </div>
@@ -168,8 +171,8 @@
 <!-- How to Use Your Leaves Section -->
 <div class="max-w-7xl container mx-auto p-6">
   <div class="mb-8">
-    <h2 class="text-2xl font-bold mb-4">How to Use Your Leaves?</h2>
-    <div class="flex space-x-4">
+    <h2 class="text-2xl font-bold mb-4 flex justify-center">How to Use Your Leaves?</h2>
+    <div class="flex justify-center space-x-4">
       <InfoBox>
         <img
           slot="image"
@@ -195,21 +198,6 @@
           Customize your mascot with fun accessories and decorations.
         </div>
         <button slot="button" on:click={goToHome}>Learn More</button>
-      </InfoBox>
-      <InfoBox>
-        <img
-          slot="image"
-          src={leaderboard}
-          alt="leaderboard"
-          class="w-40 h-auto mx-auto mb-2"
-        />
-        <div slot="title" class="text-xl font-bold m-2">
-          Compete with other users
-        </div>
-        <div slot="description">
-          Climb the leaderboard and show off your progress
-        </div>
-        <button slot="button" on:click={goToLeaderboard}>Learn More</button>
       </InfoBox>
     </div>
   </div>

@@ -1,38 +1,59 @@
-# sv
+# Frontend Sveltekit Project
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Overview
+This project, Taste the Change, consists of a frontend built with SvelteKit & TailwindCSS.
 
-## Creating a project
+## Architecture
+The project is structured as follows:
+* **.github:** used as part of our development pipeline. 
+* **.vercel/output:** used as part of our development pipeline.
+* **src:** contains the core of our application such as: routes, stores, library and tests.
+  * **lib:** serves as the library with all assets & components.
+  * **routes** contains all routes with pages for the application.
+  * **stores** contains stores used for the application.
+  * **test** contains everything nessecary to test several parts of the application.
+* **static** contains static elements for the application such as the favicon. 
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Features
+1. **About our app** On the about page you can get more information on our application. 
+2. **Recipes:** You can choose/find recipes to cook for six different diet goals such as vegetarian and vegan recipes. You can also use filters to easier find what you are looking for.
+3. **Goals:** Each week, you can select one goal to work on. Once completed you will be able to claim leaves, which are the currency of our application.
+4. **Leaves:** For each goal that you complete, you can earn a certain amount of leaves, which you can use to buy accessories for your personal rabbit. 
+5. **Personal rabbit:** You get a personal rabbit that you can name & personalize with accessories unlocked with leaves. You can find the rabbit on your homepage. 
+6. **Articles:** On the homepage there is a section with articles available. You can choose and open these to read more about co2 related topics.
+7. **Statistics** On this page you can view a graph which shows the average co2 emission by a person per month, and then if you are above or below that per month. 
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Technologies Used
+* **Node.js & npm** for package management.
+* **TailwindCSS** for the styling of the pages.
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Getting Started
+### Prerequisites
+* Node.js & npm (for local development)
 
-## Developing
+### Running the Project
+1. Clone the repository:
+    ```bash
+    git clone <repository-url>
+    cd <repository-folder>
+    ```
+2. Install node modules:
+    ```bash
+    npm install
+    ```
+3. (Optional) If you run into any errors on step 2:
+    ```bash
+    npm audit fix
+    ```
+4. Start the application:
+    ```bash
+    npm run dev
+    ```
+5. Access the application:
+    - Taste the Change website: `http://localhost:5173`
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Stopping the Services
+To stop the running services: use **ctrl + c** twice
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## License
+This project is licensed under the MIT License.

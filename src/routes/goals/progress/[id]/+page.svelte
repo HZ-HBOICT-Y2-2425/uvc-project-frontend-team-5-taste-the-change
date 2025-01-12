@@ -1,7 +1,7 @@
 <script>
   export let data; // Provided by the server-side loader
   import { onMount } from 'svelte';
-  import { leafAmount, fetchLeafAmount, incrementLeafAmount } from '/../../stores/leafStore';
+  import { leafAmount, fetchLeafAmount, incrementLeafAmount } from '../../../../stores/leafStore';
 
   let { goalId, pickedGoal, goalMessages, goalHistory, error } = data;
 
@@ -16,7 +16,7 @@
     if (response.ok) {
       pickedGoal = { ...pickedGoal, status: 'collected' };
       // Fetch updated leaf amount
-      await fetchLeafAmount();
+      await incrementLeafAmount(10);
       console.log('Goal successfully collected:', pickedGoal);
     } else {
       const errorData = await response.json();

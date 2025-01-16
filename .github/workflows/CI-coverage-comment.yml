@@ -30,7 +30,7 @@ jobs:
 
       # Step 5: Run Tests and Collect Coverage
       - name: Run Vitest Tests and Generate Coverage
-        run: npm run test:coverage
+        run: npm run test --coverage
 
       # Step 6: Debug Coverage Path (Optional for troubleshooting)
       - name: Debug Coverage Path

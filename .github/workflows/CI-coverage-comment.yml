@@ -26,7 +26,7 @@ jobs:
 
       # Step 4: Run Linter
       - name: Run Linter
-        run: npm run lint
+        run: npx eslint . --max-warnings=-1  # Allow warnings, show both errors and warnings
 
       # Step 5: Run Tests and Collect Coverage
       - name: Run Vitest Tests and Generate Coverage

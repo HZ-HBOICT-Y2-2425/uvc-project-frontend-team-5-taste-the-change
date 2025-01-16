@@ -1,0 +1,40 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout Code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set Up Node.js
+      - name: Set Up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Step 3: Install Dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Step 4: Run ESLint
+      - name: Run Linter (ESLint)
+        run: npx eslint .
+
+      # Step 5: Run Tests and Collect Coverage
+      - name: Run Tests and Generate Coverage
+        run: npm run test -- --coverage
+
+      # Step 5: Post Coverage Comment to Pull Request
+      - name: Post Jest Coverage Comment
+        uses: MishaKav/jest-coverage-comment@v1
+        with:
+          coveragePath: coverage/lcov-report/index.html
+          githubToken: ${{ secrets.GITHUB_TOKEN }}

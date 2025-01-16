@@ -12,6 +12,13 @@ export default defineConfig({
     //     outputFile: './coverage/junit.xml',
     //   }),
     // ],
+    reporters: [
+      'default',
+      ['junit', { suiteName: 'UI tests' }]
+    ],
+    outputFile: {
+      junit: './coverage/junit.xml',
+    },
     coverage: {
       provider: 'v8', // Use V8 as the coverage provider
       reporter: ['text', 'html', 'lcov'], // Generate reports in text, HTML, and LCOV formats

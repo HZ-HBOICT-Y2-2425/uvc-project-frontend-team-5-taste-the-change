@@ -41,6 +41,7 @@ jobs:
           hide-comment: false
           create-new-comment: true
           hide-summary: false
-          lcov_file: coverage/lcov.info
+          junitxml-title: Tests ran
+          junitxml-path: ./coverage/junit.xml
           coverage-title: Details
           coverage-path: ./coverage/lcov-report/index.html

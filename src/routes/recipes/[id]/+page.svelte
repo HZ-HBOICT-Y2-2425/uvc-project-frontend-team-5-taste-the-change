@@ -23,6 +23,8 @@
     isDone = !isDone;
   }
 
+  import { goto } from '$app/navigation';
+
   function goToRecipes() {
     goto("/recipes");
   }
@@ -31,11 +33,7 @@
 <div class="container w-full mx-auto">
   <section>
     <div class="border border-spacing-1 border-gray-400 m-10 p-2 rounded-xl">
-      <button
-        class="bg-[#76a4e9] rounded-3xl justify-center items-center gap-2.5 inline-flex p-3 m-3"
-        on:click={goToRecipes}
-        type="button"
-      >
+      <button class="bg-[#76a4e9] rounded-3xl justify-center items-center inline-flex p-3 m-3" on:click={goToRecipes}>
         <p class="text-white text-lg font-bold uppercase leading-tight">
           Back to Recipes
         </p>

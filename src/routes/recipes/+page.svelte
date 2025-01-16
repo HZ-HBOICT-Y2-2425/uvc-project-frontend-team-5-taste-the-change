@@ -114,7 +114,7 @@
 
     <div class="w-3/4">
       <h2 class="text-sm mb-4">Recipes matching description: {filteredRecipes.length}</h2>
-      <div class="grid grid-cols-3 gap-6">
+      <div class="grid grid-cols-3 gap-6 mb-5">
         {#each filteredRecipes as recipe, index}
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden relative">
           <div class="relative">

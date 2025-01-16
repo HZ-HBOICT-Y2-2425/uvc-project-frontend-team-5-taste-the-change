@@ -33,7 +33,7 @@ jobs:
       - name: Post Jest Coverage Comment
         uses: MishaKav/jest-coverage-comment@main
         with:
-          github-token: ${{ secrets.TEST_TOKEN }}
+          github-token: ${{ secrets.VERCEL_TOKEN }}
           coverage-summary-path: ./coverage/coverage-summary.json
           title: Frontend Coverage Report
           summary-title: Summary

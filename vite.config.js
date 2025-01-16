@@ -6,12 +6,12 @@ export default defineConfig({
     environment: 'jsdom', // Browser-like testing
     globals: true, // Enable global test functions like describe and it
     setupFiles: './src/setupTests.js', // Optional setup file
-    reporters: [
-      'default',
-      new JUnitReporter({
-        outputFile: './coverage/junit.xml',
-      }),
-    ],
+    // reporters: [
+    //   'default',
+    //   new JUnitReporter({
+    //     outputFile: './coverage/junit.xml',
+    //   }),
+    // ],
     coverage: {
       provider: 'v8', // Use V8 as the coverage provider
       reporter: ['text', 'html', 'lcov'], // Generate reports in text, HTML, and LCOV formats

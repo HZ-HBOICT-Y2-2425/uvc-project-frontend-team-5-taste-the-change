@@ -33,7 +33,8 @@ jobs:
       - name: Post Jest Coverage Comment
         uses: MishaKav/jest-coverage-comment@main
         with:
-          github-token: ${{ secrets.VERCEL_TOKEN }}
+        // Main issue is token, cuz our repo doesn't have Read and write permissions in Settings/Action/General section, but u can see in terminal via npx jest --coverage
+          github-token: ${{ secrets.TEST_TOKEN }}
           coverage-summary-path: ./coverage/coverage-summary.json
           title: Frontend Coverage Report
           summary-title: Summary

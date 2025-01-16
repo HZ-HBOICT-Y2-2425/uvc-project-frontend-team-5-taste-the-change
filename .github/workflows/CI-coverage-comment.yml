@@ -1,12 +1,12 @@
-name: CI Pipeline
+name: CI Pipeline with Vitest Coverage
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-
+      - Testing
 jobs:
-  build-and-analyze:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,23 +18,34 @@ jobs:
       - name: Set Up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 20
 
       # Step 3: Install Dependencies
       - name: Install Dependencies
         run: npm install
 
-      # Step 4: Run ESLint
-      - name: Run Linter (ESLint)
-        run: npx eslint .
+      # Step 4: Run Linter
+      - name: Run Linter
+        run: npm run lint
 
       # Step 5: Run Tests and Collect Coverage
-      - name: Run Tests and Generate Coverage
-        run: npm run test -- --coverage
+      - name: Run Vitest Tests and Generate Coverage
+        run: npm run test:coverage
 
-      # Step 5: Post Coverage Comment to Pull Request
-      - name: Post Jest Coverage Comment
-        uses: MishaKav/jest-coverage-comment@v1
+      # Step 6: Debug Coverage Path (Optional for troubleshooting)
+      - name: Debug Coverage Path
+        run: ls -R coverage
+
+      # Step 7: Post Coverage Comment to Pull Request
+      - name: Post Coverage Comment
+        uses: actions/github-script@v6
         with:
-          coveragePath: coverage/lcov-report/index.html
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const coverage = fs.readFileSync('./coverage/lcov-report/index.html', 'utf-8');
+            github.rest.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `### Code Coverage Report\n\n${coverage}`,
+            });

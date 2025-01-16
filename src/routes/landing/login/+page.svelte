@@ -9,28 +9,28 @@
   let usernameExists = false;
 
   function checkAvailability(event) {
-  event.preventDefault();
+    event.preventDefault();
   
-  const userInput = document.getElementById("username").value;
+    const userInput = document.getElementById("username").value;
 
-  let usernameExists = false;
+    let usernameExists = false;
 
-  data.data.forEach((user) => {
-    if (user.username === userInput) {
-      usernameExists = true;
+    data.data.forEach((user) => {
+      if (user.username === userInput) {
+        usernameExists = true;
+      }
+    });
+
+    if (usernameExists) {
+      console.log(`Logging in as ${userInput}`);
+      name.set(userInput);
+      goto('/');
+    } else {
+      console.log(`Signing up as ${userInput}`);
+      name.set(userInput);
+      goto('/landing/diet');
     }
-  });
-
-  if (usernameExists) {
-    console.log(`Logging in as ${userInput}`);
-    name.set(userInput);
-    goto('/');
-  } else {
-    console.log(`Signing up as ${userInput}`);
-    name.set(userInput);
-    goto('/landing/diet');
   }
-}
 
 </script>
 

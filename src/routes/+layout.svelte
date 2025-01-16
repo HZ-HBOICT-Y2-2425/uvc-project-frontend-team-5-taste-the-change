@@ -10,7 +10,7 @@
     import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	onMount(() => {
 	 // Fetch the leaf amount when the app loads
-  });
+	});
 </script>
 
 <div class="flex flex-col h-screen">

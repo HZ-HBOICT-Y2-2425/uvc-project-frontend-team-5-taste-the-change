@@ -1,0 +1,47 @@
+name: CI Pipeline with Vitest Coverage
+
+on:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js
+      - name: Set Up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Step 3: Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Step 4 Run Vitest Tests and Generate Coverage
+      - name: Run Vitest Tests and Generate Coverage
+        run: npx vitest --coverage
+
+      # Step 5 Debug Coverage Paths (Optional Step to Validate Paths)
+      - name: Debug Coverage Path
+        run: ls -l coverage/
+
+      # Step 6 Post Jest Coverage Comment to Pull Request
+      - name: Post Jest Coverage Comment
+        uses: MishaKav/jest-coverage-comment@main
+        with:
+          github-token: ${{ secrets.TEST_TOKEN }}
+          coverage-summary-path: ./coverage/coverage-summary.json
+          title: Frontend Coverage Report
+          summary-title: Summary
+          badge-title: Coverage
+          hide-comment: false
+          create-new-comment: true
+          hide-summary: false
+          junitxml-title: Tests ran
+          junitxml-path: ./coverage/junit.xml
+          coverage-title: Details
+          coverage-path: ./coverage/lcov-report/index.html

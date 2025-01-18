@@ -10,7 +10,7 @@
     import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	onMount(() => {
 	 // Fetch the leaf amount when the app loads
-  });
+	});
 </script>
 
 <div class="flex flex-col h-screen">
@@ -45,6 +45,6 @@
 	</main>
 
 	<footer class="bg-gradient-to-r from-[#96DF77] via-[#D9FDCA] to-[#BDD4FA]">
-		<p class="p-2 text-center">2025 | Taste the Change - V3.0</p>
+		<p class="p-2 text-center">2025 | Taste the Change - V3.1</p>
 	</footer>
 </div>

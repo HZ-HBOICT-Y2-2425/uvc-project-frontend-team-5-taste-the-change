@@ -49,38 +49,38 @@
 
   // Function to pick a goal
  async function pickGoal(id) {
-    if (goalPicked) return;
+   if (goalPicked) return;
 
-    try {
-        const response = await fetch(`http://localhost:3013/pick-goal/${id}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-        });
+   try {
+     const response = await fetch(`http://localhost:3013/pick-goal/${id}`, {
+       method: "POST",
+       headers: { "Content-Type": "application/json" },
+     });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.error("Error picking goal:", errorData);
-            return;
-        }
+     if (!response.ok) {
+       const errorData = await response.json();
+       console.error("Error picking goal:", errorData);
+       return;
+     }
 
-        const updatedGoal = await response.json();
+     const updatedGoal = await response.json();
 
-        goals = goals.map((goal) =>
-            goal.id === id ? { ...goal, picked: true, status: updatedGoal.status } : goal
-        );
+     goals = goals.map((goal) =>
+       goal.id === id ? { ...goal, picked: true, status: updatedGoal.status } : goal
+     );
 
-        goalPicked = true;
-        pickedGoal.set(updatedGoal);
+     goalPicked = true;
+     pickedGoal.set(updatedGoal);
 
-        localStorage.setItem("selectedGoalId", id);
+     localStorage.setItem("selectedGoalId", id);
 
-        resetCountdown(); 
+     resetCountdown(); 
 
-    } catch (error) {
-        console.error("Error picking goal:", error);
-        alert("An unexpected error occurred while picking the goal.");
-    }
-}
+   } catch (error) {
+     console.error("Error picking goal:", error);
+     alert("An unexpected error occurred while picking the goal.");
+   }
+ }
 
 
   // Reset all goals when countdown timer hits zero
@@ -122,10 +122,10 @@ async function resetGoals() {
   }
 
   function navigateToProgress() {
-  const selectedGoalId = localStorage.getItem("selectedGoalId");
+    const selectedGoalId = localStorage.getItem("selectedGoalId");
     goto(`/goals/progress/${selectedGoalId}`);
  
-}
+  }
 
 </script>
 
@@ -159,8 +159,8 @@ async function resetGoals() {
             <div class="pl-4">
             <button
             class="{goal.status === 'picked' 
-                    ? 'bg-green-500 text-white' 
-                    : 'bg-white border border-green-500 hover:bg-green-600 text-green-500'} 
+              ? 'bg-green-500 text-white' 
+              : 'bg-white border border-green-500 hover:bg-green-600 text-green-500'} 
                   px-4 py-2 rounded-full hover:text-white transition duration-300"
             on:click={() => handleClick(goal.id)}
             disabled={goal.picked || $pickedGoal}

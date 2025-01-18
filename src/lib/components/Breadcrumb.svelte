@@ -25,7 +25,7 @@
       }
   </script>
   
-  <div class="">
+  <div>
     {#each crumbs as c, i}
       {#if i == crumbs.length - 1}
         <span class="label">

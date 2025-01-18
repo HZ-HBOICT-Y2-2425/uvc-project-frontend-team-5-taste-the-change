@@ -5,7 +5,7 @@
     let finalName = ""; 
 
     function finalRabbitName() {
-        bunnyName.set(name)
+      bunnyName.set(name)
     }
 </script>
 

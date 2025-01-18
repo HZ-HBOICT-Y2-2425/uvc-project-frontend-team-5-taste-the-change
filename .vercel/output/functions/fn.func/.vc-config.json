@@ -1,0 +1,10 @@
+{
+	"runtime": "nodejs22.x",
+	"handler": "..\\..\\..\\..\\..\\..\\..\\..\\Users\\karas\\OneDrive\\Documents\\UVE\\project-team-5\\uvc-project-frontend-team-5-taste-the-change\\.svelte-kit\\vercel-tmp\\index.js",
+	"launcherType": "Nodejs",
+	"experimentalResponseStreaming": true,
+	"framework": {
+		"slug": "sveltekit",
+		"version": "2.8.1"
+	}
+}

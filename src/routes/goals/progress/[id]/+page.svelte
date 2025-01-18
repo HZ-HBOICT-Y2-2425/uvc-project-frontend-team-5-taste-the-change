@@ -6,26 +6,26 @@
   let { goalId, pickedGoal, goalMessages, goalHistory, error } = data;
 
   async function handleCollect(goalId) {
-  try {
-    console.log('Collecting goal with ID:', goalId);
-    const response = await fetch(`http://localhost:3013/goals/${goalId}/collect`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    });
+    try {
+      console.log('Collecting goal with ID:', goalId);
+      const response = await fetch(`http://localhost:3013/goals/${goalId}/collect`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-    if (response.ok) {
-      pickedGoal = { ...pickedGoal, status: 'collected' };
-      // Fetch updated leaf amount
-      await incrementLeafAmount(10);
-      console.log('Goal successfully collected:', pickedGoal);
-    } else {
-      const errorData = await response.json();
-      console.error('Error collecting goal:', errorData);
+      if (response.ok) {
+        pickedGoal = { ...pickedGoal, status: 'collected' };
+        // Fetch updated leaf amount
+        await incrementLeafAmount(10);
+        console.log('Goal successfully collected:', pickedGoal);
+      } else {
+        const errorData = await response.json();
+        console.error('Error collecting goal:', errorData);
+      }
+    } catch (error) {
+      console.error('Error collecting goal:', error);
     }
-  } catch (error) {
-    console.error('Error collecting goal:', error);
   }
-}
 
 
   console.log('Goal History:', goalHistory);
@@ -49,8 +49,8 @@
     <div class="goal-item pt-6">
       <button
         class="{pickedGoal.status === 'collected' 
-                ? 'bg-green-500 text-white' 
-                : 'bg-white border border-green-500 hover:bg-green-600 text-green-500'} 
+          ? 'bg-green-500 text-white' 
+          : 'bg-white border border-green-500 hover:bg-green-600 text-green-500'} 
               px-4 py-2 rounded-full hover:text-white transition duration-300"
         on:click={() => handleCollect(pickedGoal.id)}
         disabled={pickedGoal.status === 'collected'}

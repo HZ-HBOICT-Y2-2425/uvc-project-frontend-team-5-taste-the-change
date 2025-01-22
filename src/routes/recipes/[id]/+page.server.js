@@ -3,7 +3,7 @@
 */
 export async function load({ params }) {
   const { id } = params;
-  const res = await fetch(`http://localhost:3012/recipes/${id}`);
+  const res = await fetch(`https://uvc-project-backend-team-5-taste-the-vs1o.onrender.com/recipes/${id}`);
 
   if (res.ok) {
     const recipe = await res.json();

@@ -1,6 +1,6 @@
 export async function load() {
   try {
-    const response = await fetch('http://localhost:3012/recipes/');
+    const response = await fetch('https://uvc-project-backend-team-5-taste-the-vs1o.onrender.com/recipes/');
         
     if (!response.ok) {
       throw new Error('Failed to fetch recipes');

@@ -2,7 +2,7 @@
   import { setContext } from "svelte";
 
   setContext("apiReference", {
-    mainUrl: "http://localhost:3012",
+    mainUrl: "https://uvc-project-backend-team-5-taste-the-vs1o.onrender.com",
   });
 
   export let data;

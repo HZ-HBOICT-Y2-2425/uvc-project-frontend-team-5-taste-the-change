@@ -3,7 +3,7 @@ name: Taste the Change
 on:
   push:
     branches:
-      - main
+      - APItest
 
 jobs:
   build-and-deploy:

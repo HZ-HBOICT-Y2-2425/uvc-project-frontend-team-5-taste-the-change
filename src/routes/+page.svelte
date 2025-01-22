@@ -41,11 +41,6 @@
     bunnyImageURL = event.detail;
     showClothingBox = false;
   }
-
-  // Sum emissions from all users (userdata is directly an array of users)
-  data.data.forEach(user => {
-    totalCO2 += user.totalemissions;
-  });
 </script>
 
 <section class="relative flex w-full h-[90vh]">

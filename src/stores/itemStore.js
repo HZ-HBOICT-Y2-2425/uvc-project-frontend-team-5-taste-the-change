@@ -1,4 +1,17 @@
 import { writable } from "svelte/store";
+import Default from "$lib/assets/items/Default.png"
+import Bow from "$lib/assets/items/bow.png"
+import Carrot from "$lib/assets/items/carrot.png"
+import Crown from "$lib/assets/items/crown.png"
+import Flower from "$lib/assets/items/flower.png"
+import Tophat from "$lib/assets/items/tophat.png"
+
+import BunnyDefault from "$lib/assets/bunny-items/bunny-default.png"
+import BunnyBow from "$lib/assets/bunny-items/bunny-bow.png"
+import BunnyCarrot from "$lib/assets/bunny-items/bunny-carrot.png"
+import BunnyCrown from "$lib/assets/bunny-items/bunny-crown.png"
+import BunnyFlower from "$lib/assets/bunny-items/bunny-flower.png"
+import BunnyTophat from "$lib/assets/bunny-items/bunny-tophat.png"
 
 const LOCAL_STORAGE_KEY = "itemsData";
 
@@ -18,8 +31,8 @@ if (isBrowser) {
       {
         id: 1,
         name: "None",
-        imgUrl: "/assets/items/Default.png",
-        bunnyURL: "/assets/Bunny.png",
+        imgUrl: {Default},
+        bunnyURL: {BunnyDefault},
         leafAmountUnlock: 0,
         leafAmountCheck: 0,
         unlocked: true,
@@ -28,8 +41,8 @@ if (isBrowser) {
       {
         id: 2,
         name: "Tophat",
-        imgUrl: "/assets/items/tophat.png",
-        bunnyURL: "/assets/bunny-items/bunny-tophat.png",
+        imgUrl: {Tophat},
+        bunnyURL: {BunnyTophat},
         leafAmountUnlock: -6,
         leafAmountCheck: 6,
         unlocked: false,
@@ -38,8 +51,8 @@ if (isBrowser) {
       {
         id: 3,
         name: "Crown",
-        imgUrl: "/assets/items/crown.png",
-        bunnyURL: "/assets/bunny-items/bunny-crown.png",
+        imgUrl: {Crown},
+        bunnyURL: {BunnyCrown},
         leafAmountUnlock: -8,
         leafAmountCheck: 8,
         unlocked: false,
@@ -48,8 +61,8 @@ if (isBrowser) {
       {
         id: 4,
         name: "Bow",
-        imgUrl: "/assets/items/bow.png",
-        bunnyURL: "/assets/bunny-items/bunny-bow.png",
+        imgUrl: {Bow},
+        bunnyURL: {BunnyBow},
         leafAmountUnlock: -10,
         leafAmountCheck: 10,
         unlocked: false,
@@ -58,8 +71,8 @@ if (isBrowser) {
       {
         id: 5,
         name: "Flower",
-        imgUrl: "/assets/items/flower.png",
-        bunnyURL: "/assets/bunny-items/bunny-flower.png",
+        imgUrl: {Flower},
+        bunnyURL: {BunnyFlower},
         leafAmountUnlock: -14,
         leafAmountCheck: 14,
         unlocked: false,
@@ -68,8 +81,8 @@ if (isBrowser) {
       {
         id: 6,
         name: "Carrot",
-        imgUrl: "/assets/items/carrot.png",
-        bunnyURL: "/assets/bunny-items/bunny-carrot.png",
+        imgUrl: {Carrot},
+        bunnyURL: {BunnyCarrot},
         leafAmountUnlock: -18,
         leafAmountCheck: 18,
         unlocked: false,

@@ -4,6 +4,7 @@
 	import { leafAmount } from '../stores/leafStore';
 	import { onMount } from 'svelte';
 	import profileicon from "$lib/assets/profile.png";
+	import leaf from "$lib/assets/result.png"
 	import { page } from "$app/stores"; 
 	import { derived } from "svelte/store";
 
@@ -33,7 +34,7 @@
 		</li>
 		</ul>
 		<ul class="flex items-center text-xl list-none">
-		<li class="list-none"><img src="src/lib/assets/result.png" alt="leaf"></li>
+		<li class="list-none"><img src={leaf} alt="leaf"></li>
 		<li class="list-none">{$leafAmount}</li>
 		</ul>
 	</div>

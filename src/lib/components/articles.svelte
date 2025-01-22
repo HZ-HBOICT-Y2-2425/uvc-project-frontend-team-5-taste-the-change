@@ -27,7 +27,7 @@
       updateVisibleArticles();
     } else {
       try {
-        const response = await fetch("http://localhost:3011/articles");
+        const response = await fetch("https://uvc-project-backend-team-5-taste-the-152v.onrender.com/articles");
         const result = await response.json();
         articles = result.articles as {
           id: number;

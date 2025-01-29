@@ -23,25 +23,22 @@ jobs:
 
       # Step 4 Run Vitest Tests and Generate Coverage
       - name: Run Vitest Tests and Generate Coverage
-        run: npx vitest --coverage
+        run: npm run test:coverage
 
-      # Step 5 Debug Coverage Paths (Optional Step to Validate Paths)
+      # Step 5 Debug Coverage Paths (Optional)
       - name: Debug Coverage Path
         run: ls -l coverage/
 
-      # Step 6 Post Jest Coverage Comment to Pull Request
-      - name: Post Jest Coverage Comment
-        uses: MishaKav/jest-coverage-comment@main
+      # Step 6 Post Vitest Coverage Comment to Pull Request
+      - name: Post Vitest Coverage Comment
+        uses: davelosert/vitest-coverage-report-action@v2
         with:
           github-token: ${{ secrets.TEST_TOKEN }}
-          coverage-summary-path: ./coverage/coverage-summary.json
           title: Frontend Coverage Report
           summary-title: Summary
           badge-title: Coverage
-          hide-comment: false
-          create-new-comment: true
-          hide-summary: false
+          coverage-summary-path: ./coverage/coverage-summary.json
+          coverage-title: Coverage Details
+          coverage-path: ./coverage/lcov-report/index.html
           junitxml-title: Tests ran
           junitxml-path: ./coverage/junit.xml
-          coverage-title: Details
-          coverage-path: ./coverage/lcov-report/index.html

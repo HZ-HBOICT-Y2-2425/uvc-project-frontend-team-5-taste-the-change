@@ -7,7 +7,6 @@
 
   async function handleCollect(goalId) {
     try {
-      console.log('Collecting goal with ID:', goalId);
       const response = await fetch(`http://localhost:3013/goals/${goalId}/collect`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -27,9 +26,6 @@
     }
   }
 
-
-  console.log('Goal History:', goalHistory);
-  console.log('Selected Goal ID:', goalId);
 </script>
 
 <!-- Page Layout -->
@@ -68,7 +64,7 @@
           {#each goalMessages as message, index}
             {#if index % 2 === 0}
               <div class="flex items-center">
-                <img src="/src/lib/assets/green-logo.png" class="w-20 h-20" />
+                <img src="/src/lib/assets/green-logo.png" alt="Goal Logo" class="w-20 h-20" />
                 <div class="border border-green-500 rounded-lg p-4 text-green-500 bg-white ml-3">
                   <span>{message}</span>
                 </div>

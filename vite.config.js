@@ -25,6 +25,9 @@ export default defineConfig({
       reportsDirectory: './coverage', // Output directory for coverage reports
       all: true,
     },
+    build: {
+      cssCodeSplit: false, // Prevents CSS from being split into separate files (might fix preload warning)
+    },
   },
   resolve: process.env.VITEST
     ? {
